@@ -1,0 +1,249 @@
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <div class="">
+                        <a href="/dashboard" class="logo"><img src="assets/images/icon_amar_school.png" height="35" alt="logo"></a>
+                        &nbsp;
+                        <a href="/dashboard" class="logo text-center">Amar School</a>
+
+                    </div>
+                </div>
+
+                <div class="sidebar-inner slimscrollleft">
+                    <div id="sidebar-menu">
+                        <ul>
+                            <!--Main-->
+                            <li class="menu-title">Main</li>
+                                <!--Dashboard-->
+                                <li>
+                                    <a href="/admin" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Dashboard</span></a>
+                                </li>
+                            <!--ACADEMIC Menu--->
+                            <li class="menu-title">Academic</li>
+                                <!--Products-->
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Teacher
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/admin/product/create">Add New</a></li>
+                                        <li><a href="/admin/product">Product List</a></li>
+                                        <li><a href="/admin/category">Category</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Student
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/admin/product/create">Add New</a></li>
+                                        <li><a href="/admin/product">Product List</a></li>
+                                        <li><a href="/admin/category">Category</a></li>
+                                    </ul>
+                                </li>
+                                <!--ADMINISTRATIVE-->
+                                <li class="menu-title">Administrative</li>
+                                <!---->
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Accounting
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="">Payments</a></li>
+                                        <li><a href="">Deposits</a></li>
+                                        <li><a href="">Bank Account Transfers</a></li>
+                                        <li><a href="">Journal Entry</a></li>
+                                        <li><a href="">Budget Entry</a></li>
+                                        <li><a href="">Reconcile Bank Account</a></li>
+                                        <li><a href="">Revenue / Costs Accruals</a></li>
+                                        <li><a href="">Journal Inquiry</a></li>
+                                        <li><a href="">GL Inquiry</a></li>
+                                        <li><a href="">Bank Account Inquiry</a></li>
+                                        <li><a href="">Tax Inquiry</a></li>
+                                        <li><a href="">Trial Balance</a></li>
+                                        <li><a href="">Balance Sheet Drilldown</a></li>
+                                        <li><a href="">Profit and Loss Drilldown</a></li>
+                                        <li><a href="">Banking Reports</a></li>
+                                        <li><a href="">General Ledger Reports</a></li>
+                                        <li><a href="">Bank Accounts</a></li>
+                                        <li><a href="">Quick Entries</a></li>
+                                        <li><a href="">Account Tags</a></li>
+                                        <li><a href="">Currencies</a></li>
+                                        <li><a href="">Exchange Rates</a></li>
+                                        <li><a href="">GL Accounts</a></li>
+                                        <li><a href="">GL Account Groups</a></li>
+                                        <li><a href="">GL Account Classes</a></li>
+                                        <li><a href="">Revaluation of Currency Accounts</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Human Resource
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="">Employee - Information</a></li>
+                                        <li><a href="">Employee Salary Structure</a></li>
+                                        <li><a href="">Employee Extra Salary</a></li>
+                                        <li><a href="">Salary Process Month</a></li>
+                                        <li><a href="">Rollback Process Month</a></li>
+                                        <li><a href="">JV Salary Process Month</a></li>
+                                        <li><a href="">JV Settlement</a></li>
+                                        <li><a href="">Upload CV</a></li>
+                                        <li><a href="">Employee Dashboard</a></li>
+                                        <li><a href="">Leave Application Form</a></li>
+                                        <li><a href="">Loan Application Form</a></li>
+                                        <li><a href="">Advance Salary Application Form</a></li>
+                                        <li><a href="">Employee Evaluation Form</a></li>
+                                        <li><a href="">Employee Increment And Promotion Form</a></li>
+                                        <li><a href="">Employee Attendance</a></li>
+                                        <li><a href="">Employees Assets Record</a></li>
+                                        <li><a href="">Add Employee Asset</a></li>
+                                        <li><a href="">Asset Units of Measure</a></li>
+                                        <li><a href="">Asset Item Categories</a></li>
+                                        <li><a href="">Asset Items Entry</a></li>
+                                        <li><a href="">Employee Job Info Approval</a></li>
+                                        <li><a href="">Employee Remaining Leave Inquiry</a></li>
+                                        <li><a href="">Leave Approve Inquiry</a></li>
+                                        <li><a href="">Loan Approve Inquiry</a></li>
+                                        <li><a href="">Advance Salary Approve Inquiry</a></li>
+                                        <li><a href="">Employee Increment And Promotion Inquiry</a></li>
+                                        <li><a href="">Employee Retirement Inquiry</a></li>
+                                        <li><a href="">Employee Fixed Bonus Inquery</a></li>
+                                        <li><a href="">Extra Salary History</a></li>
+                                        <li><a href="">Extra Deduction History</a></li>
+                                        <li><a href="">Salary Sheet View</a></li>
+                                        <li><a href="">Extra OT View</a></li>
+                                        <li><a href="">Bank Statements</a></li>
+                                        <li><a href="">Monthly Salary Process acknoledgement</a></li>
+                                        <li><a href="">Payroll Reports</a></li>
+                                        <li><a href="">Employee - Final Settlement</a></li>
+                                        <li><a href="">Location</a></li>
+                                        <li><a href="">Department</a></li>
+                                        <li><a href="">Add Site/Office</a></li>
+                                        <li><a href="">Designation</a></li>
+                                        <li><a href="">Insert Educational Degree</a></li>
+                                        <li><a href="">Major Subject</a></li>
+                                        <li><a href="">Grade</a></li>
+                                        <li><a href="">Bank Accounts</a></li>
+                                        <li><a href="">Grade Leave Setup</a></li>
+                                        <li><a href="">Gazetted Holidays</a></li>
+                                        <li><a href="">Weekend Setup</a></li>
+                                        <li><a href="">Monthly Offday Settings</a></li>
+                                        <li><a href="">Breakup Formula </a></li>
+                                        <li><a href="">Loan Type Setup</a></li>
+                                        <li><a href="">Bonus Type Settings</a></li>
+                                        <li><a href="">Extra Salary Head Setting</a></li>
+                                        <li><a href="">Extra Salary Deduction Setting</a></li>
+                                        <li><a href="">Retirement Time Settings</a></li>
+                                    </ul>
+                                </li>
+                                <!--INVENTORY-->
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Inventory
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="">Inventory Location Transfers</a></li>
+                                        <li><a href="">Inventory Adjustments</a></li>
+                                        <li><a href="">Inventory Item Movements</a></li>
+                                        <li><a href="">Inventory Item Status</a></li>
+                                        <li><a href="">Inventory Item Status by Style</a></li>
+                                        <li><a href="">Inventory Reports</a></li>
+                                        <li><a href="">Items</a></li>
+                                        <li><a href="">Foreign Item Codes</a></li>
+                                        <li><a href="">Sales Kits</a></li>
+                                        <li><a href="">Item Categories</a></li>
+                                        <li><a href="">Inventory Locations</a></li>
+                                        <li><a href="">Inventory Movement Types</a></li>
+                                        <li><a href="">Units of Measure</a></li>
+                                        <li><a href="">Reorder Levels</a></li>
+                                        <li><a href="">Sales Pricing</a></li>
+                                        <li><a href="">Purchasing Pricing</a></li>
+                                        <li><a href="">Standard Costs</a></li>
+                                    </ul>
+                                </li>
+                                <!--Dimensions-->
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Dimension
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="">Dimension Entry</a></li>
+                                        <li><a href="">Outstanding Dimensions</a></li>
+                                        <li><a href="">Dimension Inquiry</a></li>
+                                        <li><a href="">Dimension Reports</a></li>
+                                        <li><a href="">Dimension Tags</a></li>
+                                    </ul>
+                                </li>
+                                <!--Settings-->
+                                <li class="menu-title">Settings</li>
+                                <!---->
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> User Management
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/admin/product/create">Add New</a></li>
+                                        <li><a href="/admin/product">Product List</a></li>
+                                        <li><a href="/admin/category">Category</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Permissions
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/admin/product/create">Add New</a></li>
+                                        <li><a href="/admin/product">Product List</a></li>
+                                        <li><a href="/admin/category">Category</a></li>
+                                    </ul>
+                                </li>
+
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div> <!-- end sidebarinner -->
+            </div>
+            <!-- Left Sidebar End -->
