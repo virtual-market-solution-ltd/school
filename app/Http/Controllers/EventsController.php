@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Events;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
 {
@@ -14,8 +16,12 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Events::all();
-        return $events;
+        $today = date("Y-m-d");
+        $school_id = Auth::user()->school_id;
+
+        $events = Events::where('schools_id',1)->get();
+
+        return view('backend.events.index')->with(compact('events'));
     }
 
     /**

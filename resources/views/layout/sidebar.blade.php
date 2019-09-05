@@ -22,6 +22,10 @@
                                 </li>
                             <!--ACADEMIC Menu--->
                             <li class="menu-title">Academic</li>
+                                <!--Events-->
+                                <li>
+                                    <a href="/events" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Events</span></a>
+                                </li>
                                 <!--Products-->
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
@@ -209,21 +213,13 @@
                                 </li>
                                 <!--Settings-->
                                 <li class="menu-title">Settings</li>
-                                <!---->
-                                <li class="has_sub">
-                                    <a href="" class="waves-effect">
-                                        <i class="mdi mdi-package-variant"></i>
-                                        <span> User Management
-                                            <span class="pull-right">
-                                                <i class="mdi mdi-chevron-right"></i>
-                                            </span>
-                                        </span>
-                                    </a>
-                                    <ul class="list-unstyled">
-                                        <li><a href="/admin/product/create">Add New</a></li>
-                                        <li><a href="/admin/product">Product List</a></li>
-                                        <li><a href="/admin/category">Category</a></li>
-                                    </ul>
+                                <!--Users-->
+                                <li>
+                                    <a href="/users" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Users</span></a>
+                                </li>
+                                <!--Schools-->
+                                <li>
+                                    <a href="/schools" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Schools</span></a>
                                 </li>
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">

@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
      */
     //Route::get('/schools', 'SchoolController@index')->name('schools');
     Route::resource('schools', 'SchoolController');
+    Route::resource('users', 'UsersController');
 
 
     /**
