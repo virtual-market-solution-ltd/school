@@ -4,7 +4,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="">
-                        <a href="/dashboard" class="logo"><img src="assets/images/icon_amar_school.png" height="35" alt="logo"></a>
+                        <a href="/dashboard" class="logo"><img src="/assets/images/icon_amar_school.png" height="35" alt="logo"></a>
                         &nbsp;
                         <a href="/dashboard" class="logo text-center">Amar School</a>
 

@@ -29,8 +29,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/events', 'EventsController@index')->name('events');
 
 /**TEsting */
-Route::post('/applogin', function () {
-    $users = User::all();
-    return $users;
-});
+
+
+Route::post('/applogin', 'AppControllers\AppLoginController@index')->name('applogin');
 

@@ -9,7 +9,7 @@
             <div class="col-xl-10">
                 <div class="card m-b-20">
                     <div class="card-body">
-                        <h4 class="mt-0 m-b-30 header-title">Users List</h4>
+                        <h4 class="mt-0 m-b-30 header-title">Users List &nbsp;<a href="/users/create"><button class="btn btn-primary">Add New User</button> </a></h4>
                         <div class="table-responsive">
                             <table class="table table-bordered table-responsive" id="userlist">
                             <thead>
