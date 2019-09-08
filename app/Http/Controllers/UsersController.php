@@ -10,8 +10,29 @@ use App\Roles;
 use App\School;
 use Illuminate\Support\Str;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+
 class UsersController extends Controller
 {
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('schools_id','username','password');
+
+        try {
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'invalid_credentials'], 400);
+            }
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+
+        return response()->json(compact('token'));
+    }
+
     /**
      * Display a listing of the resource.
      *

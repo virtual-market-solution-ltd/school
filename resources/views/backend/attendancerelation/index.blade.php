@@ -5,10 +5,10 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-6">
+            <div class="col-xl-12">
                 <div class="card m-b-20">
                     <div class="card-body">
-                        <h4 class="mt-0 m-b-30 header-title">Class List  <a href="class/create"><button class="btn btn-primary">Add New</button></a></h4>
+                        <h4 class="mt-0 m-b-30 header-title"> Attendance Relation <a href="/attendancerelation/create"><button class="btn btn-primary">Add New</button></a></h4>
                         <div class="table-responsive">
                             <table class="table table-bordered table-responsive">
                             <thead>
@@ -22,9 +22,10 @@
                                 </tr>
                             </thead>
                                 <tbody>
+                                @php $i = 1; @endphp
                                 @foreach($data as $row)
                                     <tr>
-                                        <td></td>
+                                        <td>{!! $i !!}</td>
                                         <td style="width:5%">
                                             {!! $row->school_classes->name !!}
                                         </td>
@@ -38,13 +39,13 @@
                                         {!! $row->student->fullname !!}
                                         </td>
                                         <td>
-                                            <a href="/section/{!! $row->id !!}/edit">
+                                            <a href="/attendancerelation/{!! $row->id !!}/edit">
                                                 <button type="button" class="btn btn-primary btn-sm waves-effect">Edit</button>
                                             </a>
                                         </td>
                                     </tr>
+                                    @php  $i++; @endphp
                                 @endforeach    
-
                                 </tbody>
                             </table>
                         </div>

@@ -14,52 +14,105 @@
                 <div class="sidebar-inner slimscrollleft">
                     <div id="sidebar-menu">
                         <ul>
-                            <!--Main-->
+
                             <li class="menu-title">Main</li>
-                                <!--Dashboard-->
-                                <li>
-                                    <a href="/admin" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Dashboard</span></a>
-                                </li>
-                            <!--ACADEMIC Menu--->
+                            <li><a href="/dashboard" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Dashboard</span></a></li>
+                                    
                             <li class="menu-title">Academic</li>
-                                <!--Events-->
-                                <li>
-                                    <a href="/events" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Events</span></a>
-                                </li>
-                                <!--Products-->
+                                <li><a href="/events" class="waves-effect"><i class="mdi  mdi-calendar"></i><span>Events</span></a></li>
+                                    
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
                                         <i class="mdi mdi-package-variant"></i>
-                                        <span> Teacher
+                                        <span> Attendance
                                             <span class="pull-right">
                                                 <i class="mdi mdi-chevron-right"></i>
                                             </span>
                                         </span>
                                     </a>
                                     <ul class="list-unstyled">
-                                        <li><a href="/admin/product/create">Add New</a></li>
-                                        <li><a href="/admin/product">Product List</a></li>
-                                        <li><a href="/admin/category">Category</a></li>
+                                        @if(Auth::user()->roles_id == 2)
+                                        <li><a href="/attendancerelation">Attendance Relation</a></li>
+                                        @endif
+                                        @if(Auth::user()->roles_id == 3)
+                                        <li><a href="/attendance/create">Take Attendance </a></li>
+                                        @endif
+                                        <li><a href="/attendance/create">Attendance Report </a></li>
                                     </ul>
                                 </li>
+
+
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
                                         <i class="mdi mdi-package-variant"></i>
-                                        <span> Student
+                                        <span> Homework
                                             <span class="pull-right">
                                                 <i class="mdi mdi-chevron-right"></i>
                                             </span>
                                         </span>
                                     </a>
                                     <ul class="list-unstyled">
-                                        <li><a href="/admin/product/create">Add New</a></li>
-                                        <li><a href="/admin/product">Product List</a></li>
-                                        <li><a href="/admin/category">Category</a></li>
+                                        @if(Auth::user()->roles_id == 2)
+                                        <li><a href="/attendancerelation">Attendance Relation</a></li>
+                                        @endif
+                                        @if(Auth::user()->roles_id == 3)
+                                        <li><a href="/homework/create">Add Homework </a></li>
+                                        @endif
+                                        <li><a href="/homework/show">View Homework</a></li>
                                     </ul>
                                 </li>
-                                <!--ADMINISTRATIVE-->
+
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Classwork
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        @if(Auth::user()->roles_id == 2)
+                                        <li><a href="/attendancerelation">Attendance Relation</a></li>
+                                        @endif
+                                        @if(Auth::user()->roles_id == 3)
+                                        <li><a href="/homework/create">Add Homework </a></li>
+                                        @endif
+                                        <li><a href="/homework/show">View Homework</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="/examroutine" class="waves-effect"><i class="mdi  mdi-calendar"></i><span>Exam Routine</span></a></li>
+
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-settings"></i>
+                                        <span> Settings
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        @if(Auth::user()->roles_id == 2)
+                                            <li><a href="/class">Class</a></li>
+                                            <li><a href="/section">Section</a></li>
+                                            <li><a href="/subject">Subject</a></li>
+                                            <li><a href="/holiday">Holiday</a></li>
+                                        @endif
+                                    </ul>
+                                </li>
+
+
+
+
+
+                                
+                                
+                                <!--
                                 <li class="menu-title">Administrative</li>
-                                <!---->
+
+                                
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
                                         <i class="mdi mdi-package-variant"></i>
@@ -163,7 +216,6 @@
                                         <li><a href="">Retirement Time Settings</a></li>
                                     </ul>
                                 </li>
-                                <!--INVENTORY-->
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
                                         <i class="mdi mdi-package-variant"></i>
@@ -193,7 +245,7 @@
                                         <li><a href="">Standard Costs</a></li>
                                     </ul>
                                 </li>
-                                <!--Dimensions-->
+
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
                                         <i class="mdi mdi-package-variant"></i>
@@ -211,13 +263,13 @@
                                         <li><a href="">Dimension Tags</a></li>
                                     </ul>
                                 </li>
-                                <!--Settings-->
+ 
                                 <li class="menu-title">Settings</li>
-                                <!--Users-->
+
                                 <li>
                                     <a href="/users" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Users</span></a>
                                 </li>
-                                <!--Schools-->
+ 
                                 <li>
                                     <a href="/schools" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Schools</span></a>
                                 </li>
@@ -236,6 +288,9 @@
                                         <li><a href="/admin/category">Category</a></li>
                                     </ul>
                                 </li>
+
+                                -->
+
 
                         </ul>
                     </div>

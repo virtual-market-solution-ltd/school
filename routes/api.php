@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Holiday;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,13 @@ Route::get('/events', 'EventsController@index')->name('events');
 
 Route::post('/applogin', 'AppControllers\AppLoginController@index')->name('applogin');
 
+Route::post('login', 'UsersController@authenticate');
+
+
+Route::get('/holiday', function (Request $request) {
+    return response()->json(Holiday::all(), 200);
+});
+
+
+
+Route::post('/attendance', 'AttendanceController@machine');

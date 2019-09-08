@@ -5,17 +5,18 @@
 
     <div class="container-fluid">
         <div class="row">
+            <div class="col-xl-3"></div>
             <div class="col-xl-6">
                 <div class="card m-b-20">
                     <div class="card-body">
-                        <h4 class="mt-0 m-b-30 header-title">Class List  <a href="class/create"><button class="btn btn-primary">Add New</button></a></h4>
+                        <h4 class="mt-0 m-b-30 header-title">Section List  <a href="{{ route('section.create') }}"><button class="btn btn-primary">Add New</button></a></h4>
                         <div class="table-responsive">
                             <table class="table table-bordered table-responsive">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
                                     <th>Class Name</th>
+                                    <th>Section Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -38,7 +39,6 @@
                                         </td>
                                     </tr>
                                 @endforeach    
-
                                 </tbody>
                             </table>
                         </div>

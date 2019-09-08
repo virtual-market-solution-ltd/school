@@ -31,7 +31,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UsersController');
     Route::resource('class', 'SchoolClassController');
     Route::resource('section', 'SchoolSectionController');
+    Route::resource('subject', 'SchoolSubjectController');
+
     Route::resource('attendancerelation', 'AttendanceRelationController');
+    Route::resource('attendance', 'AttendanceController');
+    Route::resource('homeworkrelation', 'HomeworkRelationController');
+    Route::resource('homework', 'HomeworkController');
+    Route::resource('classworkrelation', 'ClasworkRelationController');
+    Route::resource('classwork', 'ClassworkController');
+    Route::resource('meeting', 'MeetingRequestController');
+    Route::resource('holiday', 'HolidayController');
+    Route::resource('examroutine', 'ExamRoutineController');
+    Route::resource('notice', 'NoticeController');
+
 
 
     /**

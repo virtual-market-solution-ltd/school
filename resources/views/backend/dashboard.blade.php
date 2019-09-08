@@ -6,7 +6,7 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="col col-md-6 col-lg-6 col-xl-3">
                 <div class="mini-stat clearfix bg-white">
                     <span class="mini-stat-icon bg-purple mr-0 float-right"><i class="mdi mdi-basket"></i></span>
                     <div class="mini-stat-info">
