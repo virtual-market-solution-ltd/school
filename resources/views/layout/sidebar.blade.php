@@ -35,7 +35,7 @@
                                         <!--<li><a href="/attendancerelation">Attendance Relation</a></li>-->
                                         @endif
                                         @if(Auth::user()->roles_id == 3)
-                                        <li><a href="/attendance/create">Take Attendance </a></li>
+                                        <li><a href="/attendancerelation/create">Take Attendance </a></li>
                                         @endif
                                         <li><a href="/attendance/create">Attendance Report </a></li>
                                     </ul>
