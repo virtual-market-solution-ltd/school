@@ -218,7 +218,8 @@ class AttendanceController extends Controller
             $user = User::find($user_id->id);
             if(Hash::check($password, $user->password)){
                 $check_attendance = Attendance::where('attendance_date',date('Y-m-d'))->where('students_id',$request->students_id)->get();
-                if($check_attendance !=NULL){
+                //dd($check_attendance);
+                if(count($check_attendance) > 0){
                     return response()->json(['message'=>'Attendance exist','status'=>'404']);
                 }else{
                     $insert = new Attendance;
