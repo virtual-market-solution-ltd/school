@@ -21,6 +21,7 @@
                                         <th>Deadline</th>
                                         <th>Title</th>
                                         <th>Description</th>
+                                        <th>Posted on</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,6 +34,7 @@
                                         <td>{!! $row->deadline !!}</td>
                                         <td>{!! $row->name !!}</td>
                                         <td>{!! $row->description !!}</td>
+                                        <td>{!! $row->created_at !!}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -104,6 +104,7 @@
 
                                 <li><a href="/examroutine" class="waves-effect"><i class="mdi  mdi-calendar"></i><span>Exam Routine</span></a></li>
 
+                                (@if(Auth::user()->roles_id == 2))
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
                                         <i class="mdi mdi-settings"></i>
@@ -232,6 +233,8 @@
                                         <li><a href="">Dimension Tags</a></li>
                                     </ul>
                                 </li>
+
+                                @endif
 
 
                                 <!--
