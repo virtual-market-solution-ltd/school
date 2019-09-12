@@ -389,17 +389,7 @@
                                         <li><a href="">Dimension Tags</a></li>
                                     </ul>
                                 </li>
- 
-                                <li class="menu-title">Settings</li>
-
-                                <li>
-                                    <a href="/users" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Users</span></a>
-                                </li>
- 
-                                <li>
-                                    <a href="/schools" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Schools</span></a>
-                                </li>
-                                <li class="has_sub">
+                                                                <li class="has_sub">
                                     <a href="" class="waves-effect">
                                         <i class="mdi mdi-package-variant"></i>
                                         <span> Permissions
@@ -416,6 +406,17 @@
                                 </li>
 
                                 -->
+ 
+                                <li class="menu-title">Settings</li>
+
+                                <li>
+                                    <a href="/users" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Users</span></a>
+                                </li>
+ 
+                                <li>
+                                    <a href="/schools" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Schools</span></a>
+                                </li>
+
 
 
                         </ul>
