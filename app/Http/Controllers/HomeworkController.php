@@ -7,6 +7,7 @@ use App\HomeworkRelation;
 use App\SchoolClass;
 use App\SchoolSection;
 use App\SchoolSubject;
+use App\Student;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -18,8 +19,46 @@ class HomeworkController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $schools_id = Auth::user()->schools_id;
+        $teachers_id = Auth::user()->id;
+
+        $role = Auth::user()->roles_id;
+
+        if($role == 3){
+            $homeworks = Homework::where('schools_id',$schools_id )
+            ->where('teachers_id',$teachers_id)
+            ->orderBy('id','desc')
+            ->with('schools')
+            ->with('school_classes')
+            ->with('school_sections')
+            ->with('school_subjects')
+            ->with('teacher')
+            ->with('student')
+            ->get();
+            return view('backend.homework.index')->with(compact('homeworks'));
+        }
+
+        if($role == 4){
+            $users_id = Auth::user()->id;
+            $students_info = Student::where('users_id',$users_id)->first();
+
+            $homeworks = Homework::where('schools_id',$schools_id )
+            ->where('school_sections_id',$students_info->school_sections_id)
+            ->orderBy('id','desc')
+            ->with('schools')
+            ->with('school_classes')
+            ->with('school_sections')
+            ->with('school_subjects')
+            ->with('teacher')
+            ->with('student')
+            ->get();
+            return view('backend.homework.index')->with(compact('homeworks'));
+        }
+
+        
+
+
     }
 
     /**
@@ -42,7 +81,7 @@ class HomeworkController extends Controller
                                     ->groupBy('school_classes_id')
                                     ->pluck('school_classes_id');
 
-        dd($class);
+
 
         if($class != NULL){
                                                
@@ -85,6 +124,30 @@ class HomeworkController extends Controller
     public function store(Request $request)
     {
         
+        $schools_id = $request->schools_id;
+        $teachers_id = $request->teachers_id;
+        $school_classes_id = $request->school_classes_id;
+        $school_sections_id = $request->school_sections_id;
+        $school_subjects_id = $request->school_subjects_id;
+        $name = $request->name;
+        $deadline = $request->deadline;
+        $description = $request->description;
+
+        $insert = new Homework;
+        $insert->schools_id = $schools_id;
+        $insert->teachers_id = $teachers_id;
+        $insert->school_classes_id = $school_classes_id;
+        $insert->school_sections_id = $school_sections_id;
+        $insert->school_subjects_id = $school_subjects_id;
+        $insert->name = $name;
+        $insert->deadline = $deadline;
+        $insert->description = $description;
+        $insert->students_id = 11;
+        $insert->file_location = '/storage/vmsl';
+        $insert->save();
+
+        //return view('backend.homework.index');
+        return $this->index();
 
 
 

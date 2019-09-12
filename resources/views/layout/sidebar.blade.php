@@ -32,7 +32,7 @@
                                     </a>
                                     <ul class="list-unstyled">
                                         @if(Auth::user()->roles_id == 2)
-                                        <li><a href="/attendancerelation">Attendance Relation</a></li>
+                                        <!--<li><a href="/attendancerelation">Attendance Relation</a></li>-->
                                         @endif
                                         @if(Auth::user()->roles_id == 3)
                                         <li><a href="/attendance/create">Take Attendance </a></li>
@@ -53,12 +53,12 @@
                                     </a>
                                     <ul class="list-unstyled">
                                         @if(Auth::user()->roles_id == 2)
-                                        <li><a href="/attendancerelation">Attendance Relation</a></li>
+                                       <!--<li><a href="/attendancerelation">Attendance Relation</a></li>-->
                                         @endif
                                         @if(Auth::user()->roles_id == 3)
                                         <li><a href="/homework/create">Add Homework </a></li>
                                         @endif
-                                        <li><a href="/homework/show">View Homework</a></li>
+                                        <li><a href="/homework">View Homework</a></li>
                                     </ul>
                                 </li>
 
@@ -73,12 +73,32 @@
                                     </a>
                                     <ul class="list-unstyled">
                                         @if(Auth::user()->roles_id == 2)
-                                        <li><a href="/attendancerelation">Attendance Relation</a></li>
+                                        <!--<li><a href="/attendancerelation">Attendance Relation</a></li>-->
                                         @endif
                                         @if(Auth::user()->roles_id == 3)
-                                        <li><a href="/homework/create">Add Homework </a></li>
+                                        <li><a href="/homework/create">Add Classwork </a></li>
                                         @endif
-                                        <li><a href="/homework/show">View Homework</a></li>
+                                        <li><a href="/homework">View Classwork</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Transport
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        @if(Auth::user()->roles_id == 2)
+                                        <!--<li><a href="/attendancerelation">Attendance Relation</a></li>-->
+                                        @endif
+                                        @if(Auth::user()->roles_id == 2)
+                                        <li><a href="/transport/create">Add Transport</a></li>
+                                        @endif
+                                        <li><a href="/transport">View Transport</a></li>
                                     </ul>
                                 </li>
 

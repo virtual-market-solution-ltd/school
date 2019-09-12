@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('holiday', 'HolidayController');
     Route::resource('examroutine', 'ExamRoutineController');
     Route::resource('notice', 'NoticeController');
-
+    Route::resource('transport', 'TransportController');
 
 
     /**
