@@ -8,7 +8,7 @@
             <div class="col-xl-12">
                 <div class="card m-b-20">
                     <div class="card-body">
-                        <h4 class="mt-0 m-b-30 header-title">List of Schools</h4>
+                        <h4 class="mt-0 m-b-30 header-title">List of Schools <a href="/schools/create"><button class="btn btn-primary">Add New</button></a></h4>
                         <div class="table-responsive">
                             <table class="table table-bordered table-responsive">
                             <thead>
