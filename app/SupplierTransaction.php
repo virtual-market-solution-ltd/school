@@ -1,6 +1,6 @@
 <?php
 
-namespace Nucreativa\LaravelFrontAccountingModels;
+namespace App;
 
 use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
 use Illuminate\Database\Eloquent\Model;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nucreativa\LaravelFrontAccountingModels;
+namespace App;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
 

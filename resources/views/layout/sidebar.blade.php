@@ -103,15 +103,118 @@
                                     </ul>
                                 </li>
 
-
-
-
-
-                                
-                                
-                                <!--
                                 <li class="menu-title">Administrative</li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-settings"></i>
+                                        <span> Inventory
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/inventorylocationtransfer">Inventory Location Transfer</a></li>
+                                        <li><a href="/inventoryadjustment">Inventory Adjustment</a></li>
+                                        <li><a href="">Inventory Item Movements</a></li>
+                                        <li><a href="">Inventory Item Status</a></li>
+                                        <li><a href="">Inventory Reports</a></li>
+                                        <li><a href="">Items</a></li>
+                                        <li><a href="">Foreign Item Codes</a></li>
+                                        <li><a href="">Sales Kits</a></li>
+                                        <li><a href="">Item Categories</a></li>
+                                        <li><a href="">Inventory Locations</a></li>
+                                        <li><a href="">Units of Measure</a></li>
+                                        <li><a href="">Reorder Levels</a></li>
+                                        <li><a href="">Sales Pricing</a></li>
+                                        <li><a href="">Purchasing Pricing</a></li>
+                                        <li><a href="">Standard Cost</a></li>                               
+                                    </ul>
+                                </li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-settings"></i>
+                                        <span> Sales
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="">Sales Quotation Entry</a></li>    
+                                        <li><a href="">Sales Order Entry</a></li>    
+                                        <li><a href="">Direct Delivery</a></li>    
+                                        <li><a href="">Direct Invoice</a></li>    
+                                        <li><a href="">Delivery Against Sales Orders</a></li>    
+                                        <li><a href="">Invoice Against Sales Delivery</a></li>    
+                                        <li><a href="">Template Delivery</a></li>    
+                                        <li><a href="">Template Invoice</a></li>    
+                                        <li><a href="">Create & Print Recurrent Invoices</a></li>
+                                        <li><a href="">Customer Payments</a></li>    
+                                        <li><a href="">Customer Credit Notes</a></li>    
+                                        <li><a href="">Allocate Customer Payments</a></li>    
+                                        <li><a href="">Sales Qoutation Inquiry</a></li>    
+                                        <li><a href="">Sales Order Inquiry</a></li>        
+                                        <li><a href="">Customer Transaction Inquiry</a></li>    
+                                        <li><a href="">Customer Allocation Inquiry</a></li>    
+                                        <li><a href="">Customer & Sales Reports</a></li>    
+                                        <li><a href="">Add & Manage Customers</a></li>    
+                                        <li><a href="">Customer Branches</a></li>    
+                                        <li><a href="">Sales Groups</a></li>    
+                                        <li><a href="">Recurrent Invoices</a></li>    
+                                        <li><a href="">Sales Types</a></li>    
+                                        <li><a href="">Sales Persons</a></li>    
+                                        <li><a href="">Sales Areas</a></li>    
+                                        <li><a href="">Credit Status Setup</a></li>    
+                                    </ul>
+                                </li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-settings"></i>
+                                        <span> Purchase
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                          
+                                        <li><a href="">Purchase Order Entry</a></li> 
+                                        <li><a href="">Outstanding Purchase Orders Maintenance</a></li> 
+                                        <li><a href="">Direct GRN</a></li> 
+                                        <li><a href="">Direct Invoice</a></li> 
+                                        <li><a href="">Payment to Suppliers</a></li> 
+                                        <li><a href="">Supplier Invoices</a></li> 
+                                        <li><a href="">Supplier Credit Notes</a></li>                             
+                                        <li><a href="">Allocate Supplier Payments</a></li> 
+                                        <li><a href="">Purchase Orders Inquiry</a></li> 
+                                        <li><a href="">Supplier Transaction Inquiry</a></li> 
+                                        <li><a href="">Supplier Allocation Inquiry</a></li> 
+                                        <li><a href="">Supplier & Purchasing Reports</a></li> 
+                                        <li><a href="">Suppliers</a></li>                        
+                                    </ul>
+                                </li>
 
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Dimension
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/dimensionentry">Dimension Entry</a></li>
+                                        <li><a href="">Outstanding Dimensions</a></li>
+                                        <li><a href="">Dimension Inquiry</a></li>
+                                        <li><a href="">Dimension Reports</a></li>
+                                        <li><a href="">Dimension Tags</a></li>
+                                    </ul>
+                                </li>
+
+
+                                <!--
                                 
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">

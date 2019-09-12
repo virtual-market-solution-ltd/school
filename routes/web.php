@@ -35,10 +35,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('attendancerelation', 'AttendanceRelationController');
     Route::resource('attendance', 'AttendanceController');
+    Route::post('/attendance/search-students', 'AttendanceController@index')->name('attendance.search-students');
     Route::resource('homeworkrelation', 'HomeworkRelationController');
     Route::resource('homework', 'HomeworkController');
-    Route::resource('classworkrelation', 'ClasworkRelationController');
-    Route::resource('classwork', 'ClassworkController');
+    //Route::resource('classworkrelation', 'ClasworkRelationController');
+    // Route::resource('classwork', 'ClassworkController');
     Route::resource('meeting', 'MeetingRequestController');
     Route::resource('holiday', 'HolidayController');
     Route::resource('examroutine', 'ExamRoutineController');
@@ -81,6 +82,19 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::get('/events', 'EventsController@index')->name('events');
 
+
+
+    /**
+     * INVENTORY
+     */
+    Route::get('/inventorylocationtransfer', 'InventoryController@inventorylocationtransfer')->name('inventorylocationtransfer');
+    Route::get('/inventoryadjustment', 'InventoryController@inventoryadjustment')->name('inventoryadjustment');
+
+    /**
+     * Dimensions
+     */
+    Route::get('/dimensionentry', 'DimensionController@getdimensionentry')->name('getdimensionentry');
+    Route::post('/dimensionentry', 'DimensionController@postdimensionentry')->name('postdimensionentry');
 });
 
 

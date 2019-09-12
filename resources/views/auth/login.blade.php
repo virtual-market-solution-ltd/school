@@ -18,11 +18,6 @@
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/icons.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
-        <style>
-            html, body {
-                overflow: hidden;
-            }
-        </style>
 
     </head>
 
@@ -36,14 +31,11 @@
         <!-- Begin page -->
         <div class="accountbg"></div>
         <div class="wrapper-page" style="overflow:hidden !important;">
-
+                <h3 class="text-center m-0">
+                    <a href="index.html" class="logo logo-admin"><img src="assets/images/logo_amar_school.png" height="180" alt="logo"></a>
+                </h3>   
             <div class="card">
                 <div class="card-body">
-
-                    <h3 class="text-center m-0">
-                        <a href="index.html" class="logo logo-admin"><img src="assets/images/logo_amar_school.png" height="180" alt="logo"></a>
-                    </h3>
-
                     <div class="p-3">
                         <form class="form-horizontal" action="{{ route('login') }}" method="post">
                         @csrf
@@ -86,8 +78,11 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6 text-right">
-                                    <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button>
+                                    
                                 </div>
+                            </div>
+                            <div class="text-center m-0">
+                                <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Sign In</button>
                             </div>
 
                             <div class="form-group m-t-10 mb-0 row">

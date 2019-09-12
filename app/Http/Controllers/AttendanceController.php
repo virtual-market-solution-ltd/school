@@ -6,6 +6,7 @@ use App\Attendance;
 use App\AttendanceRelation;
 use App\SchoolClass;
 use App\SchoolSection;
+use App\Student;
 use App\User;
 use Auth;
 use Hash;
@@ -18,9 +19,32 @@ class AttendanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request  $request)
     {
-        //
+
+
+        if(empty( $request->except('_token') )){
+            $schools_id = Auth::user()->schools_id;
+            $class_list = SchoolClass::where('schools_id',$schools_id)->get();
+            $section_list = SchoolSection::where('schools_id',$schools_id)->with('school_classes')->get();
+            $students_list = "";
+            return view('backend.attendance.index')->with(compact('class_list','section_list','students_list'));
+        }else{
+            //return $request->all();
+            $schools_id = Auth::user()->schools_id;
+            $class_list = SchoolClass::where('schools_id',$schools_id)->get();
+            $section_list = SchoolSection::where('schools_id',$schools_id)->with('school_classes')->get();
+            $school_classes_id = $request->school_classes_id;
+            $school_sections_id = $request->school_sections_id;
+            $students_list = Student::where('schools_id',$schools_id)->where('school_classes_id',$school_classes_id)->where('school_sections_id',$school_sections_id)->get();
+
+            return view('backend.attendance.index')->with(compact('class_list','section_list','students_list','schools_id','school_classes_id','school_sections_id'));
+        }
+
+
+        
+
+        
     }
 
     /**
@@ -76,7 +100,66 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $date = date('Y-m-d');
+        $schools_id = $request->schools_id;
+        $school_classes_id = $request->school_classes_id;
+        $school_sections_id = $request->school_sections_id;
+        $students_list_id = $request->students_list_id ;
+        $students_list_id_all = $request->students_list_id_all;
+
+        $attendance_0 = array_values(array_diff($request->students_list_id_all,$request->students_list_id));
+        $attendance_1 = array_values($students_list_id);
+
+
+        $check = Attendance::where('attendance_date',$date)
+                                ->where('schools_id',$schools_id)
+                                ->where('school_classes_id',$school_classes_id)
+                                ->where('school_sections_id',$school_sections_id)
+                                ->get();
+        if(count($check) > 0){
+            $message = "Attendance data already exists";
+            $schools_id = Auth::user()->schools_id;
+            $class_list = SchoolClass::where('schools_id',$schools_id)->get();
+            $section_list = SchoolSection::where('schools_id',$schools_id)->with('school_classes')->get();
+            $students_list = "";
+            return view('backend.attendance.index')->with(compact('class_list','section_list','students_list','message'));
+        }else{
+            for($i=0;$i<count($attendance_0);$i++){
+            
+                $insert = new Attendance();
+                $insert->attendance_date = $date;
+                $insert->schools_id = $schools_id;
+                $insert->school_classes_id = $school_classes_id;
+                $insert->school_sections_id = $school_sections_id;
+                $students_id = Student::where('id',$attendance_0[$i])->first();
+                $insert->students_id = $students_id->users_id;
+                $insert->taken_by = Auth::user()->id;
+                $insert->attendance_status = 0;
+                $insert->save();
+                
+            }
+    
+            for($i=0;$i<count($attendance_1);$i++){
+                
+                $insert = new Attendance();
+                $insert->attendance_date = $date;
+                $insert->schools_id = $schools_id;
+                $insert->school_classes_id = $school_classes_id;
+                $insert->school_sections_id = $school_sections_id;
+                $students_id = Student::where('id',$attendance_1[$i])->first();
+                $insert->students_id = $students_id->users_id;
+                $insert->taken_by = Auth::user()->id;
+                $insert->attendance_status = 1;
+                $insert->save();
+                
+            }
+            return redirect('/attendance');
+        }
+
+
+ 
+        
+        
     }
 
     /**

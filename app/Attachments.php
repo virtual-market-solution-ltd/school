@@ -1,6 +1,6 @@
 <?php
 
-namespace Nucreativa\LaravelFrontAccountingModels;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
