@@ -20,7 +20,9 @@
                                     <th>Start Date</th>
                                     <th>End Date</th>
                                     <th>Description</th>
+                                    @if(Auth::user()->roles_id == 2)
                                     <th>Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                                 <tbody>
@@ -48,9 +50,11 @@
                                             {!! $event->end_date !!}
                                         </td>
                                         <td>
+                                            @if(Auth::user()->roles_id == 2)
                                             <a href="/events/{!! $event->id !!}/edit">
                                                 <button type="button" class="btn btn-primary btn-sm waves-effect">Edit</button>
                                             </a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach    

@@ -11,7 +11,7 @@
                         <!-- Start Profile Widget -->
                         <div class="profile-widget text-center">
                             <img src="/assets/images/icon_amar_school.png" class="thumb-lg rounded-circle img-thumbnail" alt="img">
-                            <h5>Jonathan Doe</h5>
+                            <h5>{!! Auth::user()->fullname !!}</h5>
                             <p><i class="fa fa-map-marker"></i> London</p>
 
                             <p class="text-muted">Lorem ipsum dolor sit ametetur adipisicing elit,
