@@ -37,7 +37,7 @@
                                         @if(Auth::user()->roles_id == 3)
                                         <li><a href="/attendance">Take Attendance </a></li>
                                         @endif
-                                        <li><a href="/attendance/create">Attendance Report </a></li>
+                                        <li><a href="/attendance/report">Attendance Report </a></li>
                                     </ul>
                                 </li>
 

@@ -254,5 +254,13 @@ class AttendanceController extends Controller
 
 
         //return $user_password;
+
+    }
+
+
+    public function attendanceReport(){
+        $users_id = Auth::user()->id;
+        $reports = Attendance::where('students_id',$users_id)->orderBy('id','desc')->get();
+        return view('backend.attendance.report')->with(compact('reports'));
     }
 }

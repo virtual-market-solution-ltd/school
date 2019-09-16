@@ -36,6 +36,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('attendancerelation', 'AttendanceRelationController');
     Route::resource('attendance', 'AttendanceController');
     Route::post('/attendance/search-students', 'AttendanceController@index')->name('attendance.search-students');
+
+
+    Route::get('/attendancereport', 'AttendanceController@attendanceReport');
     Route::resource('homeworkrelation', 'HomeworkRelationController');
     Route::resource('homework', 'HomeworkController');
     //Route::resource('classworkrelation', 'ClasworkRelationController');
@@ -71,6 +74,8 @@ Route::group(['middleware' => 'auth'], function () {
         return view('backend.dashboard');
     });
     
+
+
     /**
      * EVENTS
      */
