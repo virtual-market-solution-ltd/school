@@ -406,17 +406,23 @@
                                 </li>
 
                                 -->
- 
+
+                            @if(Auth::user()->roles_id == 1)    
                                 <li class="menu-title">Settings</li>
 
                                 <li>
-                                    <a href="/users" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Users</span></a>
+                                    <a href="/users" class="waves-effect">
+                                        <i class="mdi  mdi-view-dashboard"></i>
+                                        <span>Users</span>
+                                    </a>
                                 </li>
- 
                                 <li>
-                                    <a href="/schools" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Schools</span></a>
+                                    <a href="/schools" class="waves-effect">
+                                        <i class="mdi  mdi-view-dashboard"></i>
+                                        <span>Schools</span>
+                                    </a>
                                 </li>
-
+                            @endif
 
 
                         </ul>
