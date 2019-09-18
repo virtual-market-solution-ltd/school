@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BackAccounts extends Model {
+class BankAccounts extends Model {
 	protected $table = 'bank_accounts';
 	protected $primaryKey = 'id';
 	public $timestamps = false;

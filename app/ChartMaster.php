@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class ChartMaster extends Model {
-	protected $table = 'char_master';
+	protected $table = 'chart_master';
 	protected $primaryKey = 'account_code';
 	public $incrementing = false;
 	public $timestamps = false;

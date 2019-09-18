@@ -11,13 +11,13 @@ class ChartClass extends Model {
 	public $timestamps = false;
 
 	protected $casts = [
-		'ctype' => 'bool',
+		//'classtype' => 'bool',
 		'inactive' => 'bool'
 	];
 
 	protected $fillable = [
 		'class_name',
-		'ctype',
+		'class_type',
 		'inactive'
 	];
 }

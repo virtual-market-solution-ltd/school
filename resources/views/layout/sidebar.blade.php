@@ -14,7 +14,6 @@
                 <div class="sidebar-inner slimscrollleft">
                     <div id="sidebar-menu">
                         <ul>
-
                             <li class="menu-title">Main</li>
                             <li><a href="/dashboard" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Dashboard</span></a></li>
                                     
@@ -102,7 +101,25 @@
                                     </ul>
                                 </li>
 
-                                <li><a href="/examroutine" class="waves-effect"><i class="mdi  mdi-calendar"></i><span>Exam Routine</span></a></li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Exam Routine
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="/examroutine" class="waves-effect">
+                                                <i class="mdi  mdi-calendar"></i>
+                                                <span>Exam Routine</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
 
                                 (@if(Auth::user()->roles_id == 2))
                                 <li class="has_sub">
@@ -125,6 +142,62 @@
                                 </li>
 
                                 <li class="menu-title">Administrative</li>
+
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Dimension
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/dimensionentry">Dimension Entry</a></li>
+                                        <li><a href="">Outstanding Dimensions</a></li>
+                                        <li><a href="">Dimension Inquiry</a></li>
+                                        <li><a href="">Dimension Reports</a></li>
+                                        <li><a href="">Dimension Tags</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Accounting
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="">Payments</a></li>
+                                        <li><a href="">Deposits</a></li>
+                                        <li><a href="">Bank Account Transfers</a></li>
+                                        <li><a href="">Journal Entry</a></li>
+                                        <li><a href="">Budget Entry</a></li>
+                                        <li><a href="">Reconcile Bank Account</a></li>
+                                        <li><a href="">Revenue / Costs Accruals</a></li>
+                                        <li><a href="">Journal Inquiry</a></li>
+                                        <li><a href="">GL Inquiry</a></li>
+                                        <li><a href="">Bank Account Inquiry</a></li>
+                                        <li><a href="">Tax Inquiry</a></li>
+                                        <li><a href="">Trial Balance</a></li>
+                                        <li><a href="">Balance Sheet Drilldown</a></li>
+                                        <li><a href="">Profit and Loss Drilldown</a></li>
+                                        <li><a href="">Banking Reports</a></li>
+                                        <li><a href="">General Ledger Reports</a></li>
+                                        <li><a href="/bank_accounts_view">Bank Accounts</a></li>
+                                        <li><a href="">Quick Entries</a></li>
+                                        <li><a href="">Account Tags</a></li>
+                                        <li><a href="">Currencies</a></li>
+                                        <li><a href="">Exchange Rates</a></li>
+                                        <li><a href="/gl_accounts_view">GL Accounts</a></li>
+                                        <li><a href="/gl_account_groups_view">GL Account Groups</a></li>
+                                        <li><a href="/gl_account_classes_view">GL Account Classes</a></li>
+                                        <li><a href="">Revaluation of Currency Accounts</a></li>
+                                    </ul>
+                                </li>
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
                                         <i class="mdi mdi-settings"></i>
@@ -219,66 +292,6 @@
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
                                         <i class="mdi mdi-package-variant"></i>
-                                        <span> Dimension
-                                            <span class="pull-right">
-                                                <i class="mdi mdi-chevron-right"></i>
-                                            </span>
-                                        </span>
-                                    </a>
-                                    <ul class="list-unstyled">
-                                        <li><a href="/dimensionentry">Dimension Entry</a></li>
-                                        <li><a href="">Outstanding Dimensions</a></li>
-                                        <li><a href="">Dimension Inquiry</a></li>
-                                        <li><a href="">Dimension Reports</a></li>
-                                        <li><a href="">Dimension Tags</a></li>
-                                    </ul>
-                                </li>
-
-                                @endif
-
-
-                                <!--
-                                
-                                <li class="has_sub">
-                                    <a href="" class="waves-effect">
-                                        <i class="mdi mdi-package-variant"></i>
-                                        <span> Accounting
-                                            <span class="pull-right">
-                                                <i class="mdi mdi-chevron-right"></i>
-                                            </span>
-                                        </span>
-                                    </a>
-                                    <ul class="list-unstyled">
-                                        <li><a href="">Payments</a></li>
-                                        <li><a href="">Deposits</a></li>
-                                        <li><a href="">Bank Account Transfers</a></li>
-                                        <li><a href="">Journal Entry</a></li>
-                                        <li><a href="">Budget Entry</a></li>
-                                        <li><a href="">Reconcile Bank Account</a></li>
-                                        <li><a href="">Revenue / Costs Accruals</a></li>
-                                        <li><a href="">Journal Inquiry</a></li>
-                                        <li><a href="">GL Inquiry</a></li>
-                                        <li><a href="">Bank Account Inquiry</a></li>
-                                        <li><a href="">Tax Inquiry</a></li>
-                                        <li><a href="">Trial Balance</a></li>
-                                        <li><a href="">Balance Sheet Drilldown</a></li>
-                                        <li><a href="">Profit and Loss Drilldown</a></li>
-                                        <li><a href="">Banking Reports</a></li>
-                                        <li><a href="">General Ledger Reports</a></li>
-                                        <li><a href="">Bank Accounts</a></li>
-                                        <li><a href="">Quick Entries</a></li>
-                                        <li><a href="">Account Tags</a></li>
-                                        <li><a href="">Currencies</a></li>
-                                        <li><a href="">Exchange Rates</a></li>
-                                        <li><a href="">GL Accounts</a></li>
-                                        <li><a href="">GL Account Groups</a></li>
-                                        <li><a href="">GL Account Classes</a></li>
-                                        <li><a href="">Revaluation of Currency Accounts</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has_sub">
-                                    <a href="" class="waves-effect">
-                                        <i class="mdi mdi-package-variant"></i>
                                         <span> Human Resource
                                             <span class="pull-right">
                                                 <i class="mdi mdi-chevron-right"></i>
@@ -342,54 +355,8 @@
                                         <li><a href="">Retirement Time Settings</a></li>
                                     </ul>
                                 </li>
+                            <!--
                                 <li class="has_sub">
-                                    <a href="" class="waves-effect">
-                                        <i class="mdi mdi-package-variant"></i>
-                                        <span> Inventory
-                                            <span class="pull-right">
-                                                <i class="mdi mdi-chevron-right"></i>
-                                            </span>
-                                        </span>
-                                    </a>
-                                    <ul class="list-unstyled">
-                                        <li><a href="">Inventory Location Transfers</a></li>
-                                        <li><a href="">Inventory Adjustments</a></li>
-                                        <li><a href="">Inventory Item Movements</a></li>
-                                        <li><a href="">Inventory Item Status</a></li>
-                                        <li><a href="">Inventory Item Status by Style</a></li>
-                                        <li><a href="">Inventory Reports</a></li>
-                                        <li><a href="">Items</a></li>
-                                        <li><a href="">Foreign Item Codes</a></li>
-                                        <li><a href="">Sales Kits</a></li>
-                                        <li><a href="">Item Categories</a></li>
-                                        <li><a href="">Inventory Locations</a></li>
-                                        <li><a href="">Inventory Movement Types</a></li>
-                                        <li><a href="">Units of Measure</a></li>
-                                        <li><a href="">Reorder Levels</a></li>
-                                        <li><a href="">Sales Pricing</a></li>
-                                        <li><a href="">Purchasing Pricing</a></li>
-                                        <li><a href="">Standard Costs</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="has_sub">
-                                    <a href="" class="waves-effect">
-                                        <i class="mdi mdi-package-variant"></i>
-                                        <span> Dimension
-                                            <span class="pull-right">
-                                                <i class="mdi mdi-chevron-right"></i>
-                                            </span>
-                                        </span>
-                                    </a>
-                                    <ul class="list-unstyled">
-                                        <li><a href="">Dimension Entry</a></li>
-                                        <li><a href="">Outstanding Dimensions</a></li>
-                                        <li><a href="">Dimension Inquiry</a></li>
-                                        <li><a href="">Dimension Reports</a></li>
-                                        <li><a href="">Dimension Tags</a></li>
-                                    </ul>
-                                </li>
-                                                                <li class="has_sub">
                                     <a href="" class="waves-effect">
                                         <i class="mdi mdi-package-variant"></i>
                                         <span> Permissions
@@ -404,24 +371,27 @@
                                         <li><a href="/admin/category">Category</a></li>
                                     </ul>
                                 </li>
+                            -->    
 
-                                -->
+                                @endif
 
-                            @if(Auth::user()->roles_id == 1)    
+
+                            @if(Auth::user()->roles_id == 1 || Auth::user()->roles_id == 2)    
                                 <li class="menu-title">Settings</li>
-
                                 <li>
                                     <a href="/users" class="waves-effect">
                                         <i class="mdi  mdi-view-dashboard"></i>
                                         <span>Users</span>
                                     </a>
                                 </li>
+                                @if(Auth::user()->roles_id == 1)    
                                 <li>
                                     <a href="/schools" class="waves-effect">
                                         <i class="mdi  mdi-view-dashboard"></i>
                                         <span>Schools</span>
                                     </a>
                                 </li>
+                                @endif
                             @endif
 
 

@@ -81,6 +81,8 @@ class HomeworkController extends Controller
                                     ->groupBy('school_classes_id')
                                     ->pluck('school_classes_id');
 
+        //dd($class);                            
+
 
 
         if($class != NULL){
