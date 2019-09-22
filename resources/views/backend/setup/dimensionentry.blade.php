@@ -5,8 +5,58 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-2"></div>
-            <div class="col-xl-8">
+        <div class="col-xl-7">
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <h4 class="mt-0 m-b-30 header-title">Dimension Entry</h4>
+                        <hr>
+                        <table class="table table-bordered table-condensed text-center">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Refercene</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Date</th>
+                                    <th>Due Date</th>
+                                    <th>Closed</th>
+                                    <th>Balance</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($dimensions as $row)
+                                    <tr>
+                                        <td>#</td>
+                                        <td>{!! $row->reference !!}</td>
+                                        <td>{!! $row->name !!}</td>
+                                        <td>{!! $row->type_ !!}</td>
+                                        <td>{!! $row->date_ !!}</td>
+                                        <td>{!! $row->due_date !!}</td>
+                                        <td>
+                                             @if($row->closed == 0)
+                                                NO
+                                            @elseif($row->closed == 1)
+                                                YES
+                                            @else    
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @php 
+                                               echo  $balance = \App\GLTranscation::where('dimension_id',$row->closed)->sum('amount');
+                                            @endphp
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary">EDIT</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>  
+                    </div>
+                </div>
+            </div>   
+            <div class="col-xl-5">
                 <div class="card m-b-20">
                     <div class="card-body">
                         <h4 class="mt-0 m-b-30 header-title">Dimension Entry</h4>
@@ -66,4 +116,15 @@
         </div>
     </div><!-- container -->
 </div> <!-- Page content Wrapper -->
+@endsection
+
+@section('footer')
+<script>
+
+    $(document).ready(function() {
+        $('.table').DataTable({});
+    });
+
+</script>
+
 @endsection

@@ -10,9 +10,9 @@ class DimensionController extends Controller
 {
     public function getdimensionentry(){
         $schools_id = Auth::user()->schools_id;
+        $dimensions = Dimensions::where('schools_id',$schools_id)->get();
         $last_dimension = Dimensions::where('schools_id',$schools_id)->orderBy('id','desc')->first();
-
-        return view('backend.dimension.dimensionentry')->with(compact('last_dimension'));
+        return view('backend.setup.dimensionentry')->with(compact('last_dimension','dimensions'));
     }
 
     public function postdimensionentry(Request $request){
@@ -40,6 +40,6 @@ class DimensionController extends Controller
         $schools_id = Auth::user()->schools_id;
         $last_dimension = Dimensions::where('schools_id',$schools_id)->orderBy('id','desc')->first();
 
-        return view('backend.dimension.dimensionentry')->with(compact('last_dimension'));
+        return view('backend.setup.dimensionentry')->with(compact('last_dimension'));
     }
 }

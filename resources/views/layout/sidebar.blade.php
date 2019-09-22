@@ -171,8 +171,8 @@
                                         </span>
                                     </a>
                                     <ul class="list-unstyled">
-                                        <li><a href="">Payments</a></li>
-                                        <li><a href="">Deposits</a></li>
+                                        <li><a href="{{ route('accounts.accounts_payments_view') }}">Payments</a></li>
+                                        <li><a href="{{ route('accounts.accounts_deposit_view') }}">Deposits</a></li>
                                         <li><a href="">Bank Account Transfers</a></li>
                                         <li><a href="">Journal Entry</a></li>
                                         <li><a href="">Budget Entry</a></li>
@@ -382,6 +382,12 @@
                                     <a href="/users" class="waves-effect">
                                         <i class="mdi  mdi-view-dashboard"></i>
                                         <span>Users</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/fiscalyear" class="waves-effect">
+                                        <i class="mdi  mdi-calendar"></i>
+                                        <span>Fiscal Year</span>
                                     </a>
                                 </li>
                                 @if(Auth::user()->roles_id == 1)    

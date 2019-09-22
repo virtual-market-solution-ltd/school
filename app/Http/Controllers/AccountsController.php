@@ -9,6 +9,10 @@ use App\ChartType;
 use App\ChartMaster;
 use App\BankAccounts;
 use App\GLTranscation;
+use App\BankTransaction;
+use App\Comments;
+use App\AuditTrail;
+use App\Dimensions;
 
 class AccountsController extends Controller
 {
@@ -279,9 +283,6 @@ class AccountsController extends Controller
     }
 
     public function bank_accounts_update(Request $request){
-
-   
-
         $id = $request->id;
         $schools_id = $request->schools_id;
         $account_code = $request->account_code;
@@ -302,6 +303,331 @@ class AccountsController extends Controller
         return redirect()->route('accounts.bank_accounts_view')
                         ->with('success','Product created successfully.');
     }
+
+
+
+/**
+ * 
+ * Payments
+ * 
+ */
+
+    public function accounts_payments_view(){
+        $schools_id = Auth::user()->schools_id;
+        $bank_account_list  = BankAccounts::where('schools_id',$schools_id)->get();
+        $accounts_list = ChartMaster::where('schools_id',$schools_id)->get();
+        $dimensions = Dimensions::where('schools_id',$schools_id)->get();
+        return view('backend.accounts.accounts_payment_view')->with(compact('bank_account_list','accounts_list','dimensions'));
+    }
+
+    public function accounts_payments_store(Request $request){
+        $schools_id = Auth::user()->schools_id;
+        $type = 1;
+        $trans_no = BankTransaction::where('schools_id',$schools_id)->where('type',$type)->orderBy('id','desc')->first();
+        $bank_act = $request->bank_act;
+        $bank_account  = BankAccounts::where('id',$bank_act)->first();
+        $ref = '';
+        $trans_date = $request->trans_date;
+        $amount = $request->amount;
+        $dimension_id = $request->dimension_id;
+        $dimension2_id = 0;
+        $person_type_id = $request->person_type_id;
+        $person_id = $request->person_id;
+        $account = $request->account;
+        $memo = $request->memo_;
+
+        /**INSERTING INTO BANK TRANSFER */
+        $insert_bank_trans = new BankTransaction;
+        $insert_bank_trans->schools_id = $schools_id;
+        $insert_bank_trans->type = $type;
+        $insert_bank_trans->trans_no = $trans_no->trans_no+1 ;
+        $insert_bank_trans->bank_act = $bank_act ;
+        $insert_bank_trans->ref = $ref ;
+        $insert_bank_trans->trans_date = $trans_date ;
+        $insert_bank_trans->amount = '-'.$amount ;
+        $insert_bank_trans->dimension_id = $dimension_id ;
+        $insert_bank_trans->dimension2_id = $dimension2_id ;
+        $insert_bank_trans->person_type_id = $person_type_id ;
+        $insert_bank_trans->person_id = $person_id ;
+        $insert_bank_trans->save();
+
+        /**INSERTING INTO GL TRANSACTION */
+
+        $insert_gl_trans = new GLTranscation;
+        $insert_gl_trans->schools_id = $schools_id;
+        $insert_gl_trans->type = $type;
+        $insert_gl_trans->type_no = $trans_no->trans_no+1 ;
+        $insert_gl_trans->tran_date = $trans_date ;
+        $insert_gl_trans->amount = $amount ;
+        $insert_gl_trans->dimension_id = $dimension_id ;
+        $insert_gl_trans->dimension2_id = $dimension2_id ;
+        $insert_gl_trans->person_type_id = $person_type_id ;
+        $insert_gl_trans->person_id = $person_id ;
+        $insert_gl_trans->account = $account ;
+        $insert_gl_trans->memo_ = $memo ;
+        $insert_gl_trans->save();
+
+        $insert_gl_trans2 = new GLTranscation;
+        $insert_gl_trans2->schools_id = $schools_id;
+        $insert_gl_trans2->type = $type;
+        $insert_gl_trans2->type_no = $trans_no->trans_no+1 ;
+        $insert_gl_trans2->tran_date = $trans_date ;
+        $insert_gl_trans2->account = $bank_account->account_code;
+        $insert_gl_trans2->amount = "-".$amount ;
+        $insert_gl_trans2->dimension_id = $dimension_id ;
+        $insert_gl_trans2->dimension2_id = $dimension2_id ;
+        $insert_gl_trans2->person_type_id = $person_type_id ;
+        $insert_gl_trans2->person_id = $person_id ;
+        $insert_gl_trans2->memo_ = $memo ;
+        $insert_gl_trans2->save();
+
+
+
+        return redirect()->route('accounts.accounts_payments_view')
+                            ->with('success','Payment added successfully.');
+
+
+
+    }
+
+
+
+/**
+ * 
+ * Deposit
+ * 
+ */
+
+    public function accounts_deposit_view(){
+        $schools_id = Auth::user()->schools_id;
+        $bank_account_list  = BankAccounts::where('schools_id',$schools_id)->get();
+        $accounts_list = ChartMaster::where('schools_id',$schools_id)->get();
+        $dimensions = Dimensions::where('schools_id',$schools_id)->get();
+        return view('backend.accounts.accounts_deposit_view')->with(compact('bank_account_list','accounts_list','dimensions'));
+    }
+
+    public function accounts_deposit_store(Request $request){
+ 
+
+        $schools_id = Auth::user()->schools_id;
+        $type = 2;
+        $trans_no = BankTransaction::where('schools_id',$schools_id)->where('type',$type)->orderBy('id','desc')->first();
+        $bank_act = $request->bank_act;
+        $bank_account  = BankAccounts::where('id',$bank_act)->first();
+        $ref = '';
+        $trans_date = $request->trans_date;
+        $amount = $request->amount;
+        $dimension_id = $request->dimension_id;
+        $dimension2_id = 0;
+        $person_type_id = $request->person_type_id;
+        $person_id = $request->person_id;
+        $account = $request->account;
+        $memo = $request->memo_;
+
+        /**INSERTING INTO BANK TRANSFER */
+        $insert_bank_trans = new BankTransaction;
+        $insert_bank_trans->schools_id = $schools_id;
+        $insert_bank_trans->type = $type;
+        $insert_bank_trans->trans_no = $trans_no->trans_no+1 ;
+        $insert_bank_trans->bank_act = $bank_act;
+        $insert_bank_trans->ref = $ref ;
+        $insert_bank_trans->trans_date = $trans_date ;
+        $insert_bank_trans->amount = $amount ;
+        $insert_bank_trans->dimension_id = $dimension_id ;
+        $insert_bank_trans->dimension2_id = $dimension2_id ;
+        $insert_bank_trans->person_type_id = $person_type_id ;
+        $insert_bank_trans->person_id = $person_id ;
+        $insert_bank_trans->save();
+
+        /**INSERTING INTO GL TRANSACTION */
+
+        $insert_gl_trans = new GLTranscation;
+        $insert_gl_trans->schools_id = $schools_id;
+        $insert_gl_trans->type = $type;
+        $insert_gl_trans->type_no = $trans_no->trans_no+1 ;
+        $insert_gl_trans->tran_date = $trans_date ;
+        $insert_gl_trans->amount = "-".$amount ;
+        $insert_gl_trans->dimension_id = $dimension_id ;
+        $insert_gl_trans->dimension2_id = $dimension2_id ;
+        $insert_gl_trans->person_type_id = $person_type_id ;
+        $insert_gl_trans->person_id = $person_id ;
+        $insert_gl_trans->account = $account ;
+        $insert_gl_trans->memo_ = $memo ;
+        $insert_gl_trans->save();
+
+        $insert_gl_trans2 = new GLTranscation;
+        $insert_gl_trans2->schools_id = $schools_id;
+        $insert_gl_trans2->type = $type;
+        $insert_gl_trans2->type_no = $trans_no->trans_no+1 ;
+        $insert_gl_trans2->tran_date = $trans_date ;
+        $insert_gl_trans2->account = $bank_account->account_code;
+        $insert_gl_trans2->amount = $amount ;
+        $insert_gl_trans2->dimension_id = $dimension_id ;
+        $insert_gl_trans2->dimension2_id = $dimension2_id ;
+        $insert_gl_trans2->person_type_id = $person_type_id ;
+        $insert_gl_trans2->person_id = $person_id ;
+        $insert_gl_trans2->memo_ = $memo ;
+        $insert_gl_trans2->save();
+
+
+
+        return redirect()->route('accounts.accounts_deposit_view')
+                            ->with('success','Deposit added successfully.');
+    }
+
+/**
+ * 
+ * Bank Account Transfers
+ * 
+ */
+
+    public function bank_account_transfer_view(){
+        $schools_id = Auth::user()->schools_id;
+        $bank_account_list  = BankAccounts::where('schools_id',$schools_id)->get();
+        return view('backend.accounts.bank_account_transfer')->with(compact('bank_account_list'));
+    }
+
+    public function bank_account_transfer_store(Request $request){
+        
+        $schools_id = Auth::user()->schools_id;
+        $bank_act_from = $request->bank_act_from;
+        $bank_act_to = $request->bank_act_to;
+        $date = $request->trans_date;
+        $amount = $amount;
+        $bank_charge = $request->bank_charge;
+        $memo =  $request->memo;
+
+
+    }
+
+
+
+
+/**
+* 
+* Journal Entry
+* 
+*/
+ public function journal_entry_view(){
+     
+ }
+
+
+/**
+ * 
+ * Budget Entry
+ * 
+ */
+
+public function budget_entry_view(){
+     
+}
+
+
+ /**
+ * 
+ * Reconcile Bank Account
+ * 
+ */
+
+public function reconcile_bank_account_view(){
+     
+}
+
+/**
+ * 
+ * Journal Inquiry
+ * 
+ */
+
+public function journal_inquiry_view(){
+     
+}
+
+
+/**
+ * 
+ * GL Inquiry
+ * 
+ */ 
+
+public function gl_inquiry_view(){
+     
+}
+
+
+/**
+ * 
+ * Bank Account Inquiry
+ * 
+ */
+
+public function bank_account_inquiry_view(){
+     
+}
+
+
+/**
+ * 
+ * Tax Inquiry
+ * 
+ */
+public function tax_inquiry_view(){
+     
+}
+
+
+ /**
+ * 
+ * Trial Balance
+ * 
+ */
+public function trial_balance_view(){
+     
+}
+
+
+ /**
+ * 
+ * Balance Sheet Drilldown
+ * 
+ */
+public function balance_sheet_drilldown_view(){
+     
+}
+
+/**
+ * 
+ * Profit and Loss Drilldown
+ * 
+ */
+
+public function profit_loss_drilldown_view(){
+     
+}
+
+/**
+ * 
+ * Banking Reports
+ * 
+ */
+public function banking_reports_view(){
+     
+}
+
+
+/**
+ * 
+ * General Ledger Reports
+ * 
+ */
+
+public function gl_reports_view(){
+     
+}
+
+
+
 
 
 }
