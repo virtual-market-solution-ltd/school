@@ -491,11 +491,101 @@ class AccountsController extends Controller
         
         $schools_id = Auth::user()->schools_id;
         $bank_act_from = $request->bank_act_from;
+        $bank_act_from_details = BankAccounts::where('id',$bank_act_from)->first();
         $bank_act_to = $request->bank_act_to;
+        $bank_act_to_details = BankAccounts::where('id',$bank_act_to)->first();
         $date = $request->trans_date;
-        $amount = $amount;
+        $amount = $request->amount;
         $bank_charge = $request->bank_charge;
         $memo =  $request->memo;
+
+        /**Bank trans 1 */
+        $insert = new BankTransaction;
+        $insert->type = 4;
+        $insert->trans_no = 10;
+        $insert->ref = 1;
+        $insert->bank_act = $bank_act_from;
+        $insert->trans_date = $date;
+        $insert->amount = '-'.($amount+$bank_charge);
+        $insert->dimension_id = 0;
+        $insert->dimension2_id = 0;
+        $insert->person_type_id = '0';
+        $insert->person_id = 'From '.$bank_act_from_details->bank_account_name.' To '.$bank_act_to_details->bank_account_name;
+        $insert->schools_id = $schools_id;
+        $insert->save();
+
+        /**Bank trans 2 */
+        $insert = new BankTransaction;
+        $insert->type = 4;
+        $insert->trans_no = 10;
+        $insert->ref = 1;
+        $insert->bank_act = $bank_act_to;
+        $insert->trans_date = $date;
+        $insert->amount = $amount;
+        $insert->dimension_id = 0;
+        $insert->dimension2_id = 0;
+        $insert->person_type_id = 0;
+        $insert->person_id = $insert->person_id = 'From '.$bank_act_from_details->bank_account_name.' To '.$bank_act_to_details->bank_account_name;
+
+        $insert->schools_id = $schools_id;
+        $insert->save();
+
+        
+        /**GL trans 1 */
+        
+        $insert = new GLTranscation;
+        $insert->type = 4;
+        $insert->type_no = 10;
+        $insert->tran_date = $date;
+        $insert->account = $bank_act_from_details->account_code;
+        $insert->memo_ = 'From '.$bank_act_from_details->bank_account_name.' To '.$bank_act_to_details->bank_account_name;
+        $insert->amount ='-'.($amount+$bank_charge);
+        $insert->dimension_id = 0;
+        $insert->dimension2_id = 0;
+        $insert->person_type_id = 0;
+        $insert->person_id = 0;
+        $insert->schools_id = $schools_id;
+        $insert->save();
+        
+
+
+        /**GL trans 2 */
+        
+        $insert = new GLTranscation;
+        $insert->type = 4;
+        $insert->type_no = 10;
+        $insert->tran_date = $date;
+        $insert->account = 5690;//$bank_act_from_details->account_code;
+        $insert->memo_ = 'From '.$bank_act_from_details->bank_account_name.' To '.$bank_act_to_details->bank_account_name;
+        $insert->amount = $bank_charge;
+        $insert->dimension_id = 0;
+        $insert->dimension2_id = 0;
+        $insert->person_type_id = 0;
+        $insert->person_id = 0;
+        $insert->schools_id = $schools_id;
+        $insert->save();
+
+
+        /**GL trans 3 */
+
+        $insert = new GLTranscation;
+        $insert->type = 4;
+        $insert->type_no = 10;
+        $insert->tran_date = $date;
+        $insert->account = $bank_act_to_details->account_code;
+        $insert->memo_ = 'From '.$bank_act_from_details->bank_account_name.' To '.$bank_act_to_details->bank_account_name;
+        $insert->amount = $amount;
+        $insert->dimension_id = 0;
+        $insert->dimension2_id = 0;
+        $insert->person_type_id = 0;
+        $insert->person_id = 0;
+        $insert->schools_id = $schools_id;
+        $insert->save();
+        
+
+        return redirect()->route('accounts.bank_account_transfer_view')
+                            ->with('success','Deposit added successfully.');
+
 
 
     }
@@ -509,8 +599,96 @@ class AccountsController extends Controller
 * 
 */
  public function journal_entry_view(){
-     
+    $schools_id = Auth::user()->schools_id;
+    $bank_account_list  = BankAccounts::where('schools_id',$schools_id)->get();
+    $accounts_list = ChartMaster::where('schools_id',$schools_id)->get();
+    $dimensions = Dimensions::where('schools_id',$schools_id)->get();
+    return view('backend.accounts.journal_entry_view')->with(compact('bank_account_list','accounts_list','dimensions'));
  }
+
+ public function journal_entry_store(Request $request){
+
+    $schools_id = Auth::user()->schools_id;
+    $date = $request->trans_date;
+    $bank_act = $request->bank_act;
+    $bank_account  = BankAccounts::where('id',$bank_act)->first();
+    $dimension_id = $request->dimension_id;
+    $dimension2_id = '';
+    $debit_credit = $request->debit_credit;
+    $amount = $request->amount;
+    $memo = $request->memo;
+
+    /**If entry is a debit */
+    if($debit_credit == 0){        
+        /**Bank trans 2 */
+        $insert = new BankTransaction;
+        $insert->type = 0;
+        $insert->trans_no = 10;
+        $insert->ref = 1;
+        $insert->bank_act = $bank_act;
+        $insert->trans_date = $date;
+        $insert->amount = $amount;
+        $insert->dimension_id = 0;
+        $insert->dimension2_id = 0;
+        $insert->person_type_id = 0;
+        $insert->person_id = 0;
+        $insert->schools_id = $schools_id;
+        $insert->save();
+
+        /**GL trans 3 */
+        $insert = new GLTranscation;
+        $insert->type = 4;
+        $insert->type_no = 10;
+        $insert->tran_date = $date;
+        $insert->account = $bank_account->account_code;
+        $insert->memo_ = $memo;
+        $insert->amount = $amount;
+        $insert->dimension_id = 0;
+        $insert->dimension2_id = 0;
+        $insert->person_type_id = 0;
+        $insert->person_id = 0;
+        $insert->schools_id = $schools_id;
+        $insert->save();
+    }
+    /**If entry is a credit */
+    if($debit_credit == 1){
+        /**Bank trans 2 */
+        $insert = new BankTransaction;
+        $insert->type = 0;
+        $insert->trans_no = 10;
+        $insert->ref = 1;
+        $insert->bank_act = $bank_act;
+        $insert->trans_date = $date;
+        $insert->amount = '-'.$amount;
+        $insert->dimension_id = 0;
+        $insert->dimension2_id = 0;
+        $insert->person_type_id = 0;
+        $insert->person_id = 0;
+        $insert->schools_id = $schools_id;
+        $insert->save();
+
+        /**GL trans 3 */
+        $insert = new GLTranscation;
+        $insert->type = 4;
+        $insert->type_no = 10;
+        $insert->tran_date = $date;
+        $insert->account = $bank_account->account_code;
+        $insert->memo_ = $memo;
+        $insert->amount = '-'.$amount;
+        $insert->dimension_id = 0;
+        $insert->dimension2_id = 0;
+        $insert->person_type_id = 0;
+        $insert->person_id = 0;
+        $insert->schools_id = $schools_id;
+        $insert->save();
+    }
+
+
+    return redirect()->route('accounts.journal_entry_view')
+                                ->with('success','Journal entry added successfully.');
+
+
+}
 
 
 /**

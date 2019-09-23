@@ -89,17 +89,29 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-    /**
-     * INVENTORY
-     */
-    Route::get('/inventorylocationtransfer', 'InventoryController@inventorylocationtransfer')->name('inventorylocationtransfer');
-    Route::get('/inventoryadjustment', 'InventoryController@inventoryadjustment')->name('inventoryadjustment');
+/**
+ * INVENTORY
+ */
+Route::get('/items', 'InventoryController@add_items')->name('inventory.add_items');
+Route::post('/items', 'InventoryController@add_items_store')->name('inventory.add_items_store');
 
-    /**
-     * Dimensions
-     */
-    Route::get('/dimensionentry', 'DimensionController@getdimensionentry')->name('getdimensionentry');
-    Route::post('/dimensionentry', 'DimensionController@postdimensionentry')->name('postdimensionentry');
+
+Route::get('/inventorylocationtransfer', 'InventoryController@inventorylocationtransfer')->name('inventorylocationtransfer');
+Route::get('/inventoryadjustment', 'InventoryController@inventoryadjustment')->name('inventoryadjustment');
+
+Route::get('/inventorylocation', 'InventoryController@inventory_location')->name('inventory.inventorylocation');
+Route::post('/inventorylocation', 'InventoryController@inventory_location_store')->name('inventory.inventorylocation_store');
+
+Route::get('/inventorymovement', 'InventoryController@inventory_movement')->name('inventory.inventorymovement');
+Route::post('/inventorymovement', 'InventoryController@inventory_movement_store')->name('inventory.inventorymovement_store');
+
+Route::get('/unitofmeasure', 'InventoryController@unitofmeasure')->name('inventory.unitofmeasure');
+Route::post('/unitofmeasure', 'InventoryController@unitofmeasure_store')->name('inventory.unitofmeasure_store');
+/**
+ * Dimensions
+ */
+Route::get('/dimensionentry', 'DimensionController@getdimensionentry')->name('getdimensionentry');
+Route::post('/dimensionentry', 'DimensionController@postdimensionentry')->name('postdimensionentry');
 
 /**
  * 
@@ -128,27 +140,40 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/bank_accounts_edit/{id}/edit', 'AccountsController@bank_accounts_edit')->name('accounts.bank_accounts_edit');
     Route::put('/bank_accounts_update', 'AccountsController@bank_accounts_update')->name('accounts.bank_accounts_update');
 /*------------------------------------------------------------------------------------------------------------------------------------------------*/
-    Route::get('/accounts_payments_view', 'AccountsController@accounts_payments_view')->name('accounts.accounts_payments_view');
-    Route::post('/accounts_payments_store', 'AccountsController@accounts_payments_store')->name('accounts.accounts_payments_store');
-   /* Route::post('/bank_accounts_store', 'AccountsController@bank_accounts_store')->name('accounts.bank_accounts_store');
-    Route::get('/bank_accounts_edit/{id}/edit', 'AccountsController@bank_accounts_edit')->name('accounts.bank_accounts_edit');
-    Route::put('/bank_accounts_update', 'AccountsController@bank_accounts_update')->name('accounts.bank_accounts_update');
-    */
+Route::get('/accounts_payments_view', 'AccountsController@accounts_payments_view')->name('accounts.accounts_payments_view');
+Route::post('/accounts_payments_store', 'AccountsController@accounts_payments_store')->name('accounts.accounts_payments_store');
+/* 
+Route::post('/bank_accounts_store', 'AccountsController@bank_accounts_store')->name('accounts.bank_accounts_store');
+Route::get('/bank_accounts_edit/{id}/edit', 'AccountsController@bank_accounts_edit')->name('accounts.bank_accounts_edit');
+Route::put('/bank_accounts_update', 'AccountsController@bank_accounts_update')->name('accounts.bank_accounts_update');
+*/
 /*------------------------------------------------------------------------------------------------------------------------------------------------*/
-    Route::get('/accounts_deposit_view', 'AccountsController@accounts_deposit_view')->name('accounts.accounts_deposit_view');
-    Route::post('/accounts_deposit_view', 'AccountsController@accounts_deposit_store')->name('accounts.accounts_deposit_store');
-    /* Route::post('/bank_accounts_store', 'AccountsController@bank_accounts_store')->name('accounts.bank_accounts_store');
-     Route::get('/bank_accounts_edit/{id}/edit', 'AccountsController@bank_accounts_edit')->name('accounts.bank_accounts_edit');
-     Route::put('/bank_accounts_update', 'AccountsController@bank_accounts_update')->name('accounts.bank_accounts_update');
-     */
+Route::get('/accounts_deposit_view', 'AccountsController@accounts_deposit_view')->name('accounts.accounts_deposit_view');
+Route::post('/accounts_deposit_view', 'AccountsController@accounts_deposit_store')->name('accounts.accounts_deposit_store');
+/* 
+Route::post('/bank_accounts_store', 'AccountsController@bank_accounts_store')->name('accounts.bank_accounts_store');
+Route::get('/bank_accounts_edit/{id}/edit', 'AccountsController@bank_accounts_edit')->name('accounts.bank_accounts_edit');
+Route::put('/bank_accounts_update', 'AccountsController@bank_accounts_update')->name('accounts.bank_accounts_update');
+*/
 /*------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 Route::get('/bank_account_transfer_view', 'AccountsController@bank_account_transfer_view')->name('accounts.bank_account_transfer_view');
 Route::post('/bank_account_transfer_store', 'AccountsController@bank_account_transfer_store')->name('accounts.bank_account_transfer_store');
-/* Route::post('/bank_accounts_store', 'AccountsController@bank_accounts_store')->name('accounts.bank_accounts_store');
- Route::get('/bank_accounts_edit/{id}/edit', 'AccountsController@bank_accounts_edit')->name('accounts.bank_accounts_edit');
- Route::put('/bank_accounts_update', 'AccountsController@bank_accounts_update')->name('accounts.bank_accounts_update');
- */
+/* 
+Route::post('/bank_accounts_store', 'AccountsController@bank_accounts_store')->name('accounts.bank_accounts_store');
+Route::get('/bank_accounts_edit/{id}/edit', 'AccountsController@bank_accounts_edit')->name('accounts.bank_accounts_edit');
+Route::put('/bank_accounts_update', 'AccountsController@bank_accounts_update')->name('accounts.bank_accounts_update');
+*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
+Route::get('/journal_entry_view', 'AccountsController@journal_entry_view')->name('accounts.journal_entry_view');
+Route::post('/journal_entry_store', 'AccountsController@journal_entry_store')->name('accounts.journal_entry_store');
+/* 
+Route::post('/bank_accounts_store', 'AccountsController@bank_accounts_store')->name('accounts.bank_accounts_store');
+Route::get('/bank_accounts_edit/{id}/edit', 'AccountsController@bank_accounts_edit')->name('accounts.bank_accounts_edit');
+Route::put('/bank_accounts_update', 'AccountsController@bank_accounts_update')->name('accounts.bank_accounts_update');
+*/
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
 /**
  * 
  * SETTINGS

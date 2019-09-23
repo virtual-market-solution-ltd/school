@@ -154,10 +154,6 @@
                                     </a>
                                     <ul class="list-unstyled">
                                         <li><a href="/dimensionentry">Dimension Entry</a></li>
-                                        <li><a href="">Outstanding Dimensions</a></li>
-                                        <li><a href="">Dimension Inquiry</a></li>
-                                        <li><a href="">Dimension Reports</a></li>
-                                        <li><a href="">Dimension Tags</a></li>
                                     </ul>
                                 </li>
 
@@ -173,8 +169,8 @@
                                     <ul class="list-unstyled">
                                         <li><a href="{{ route('accounts.accounts_payments_view') }}">Payments</a></li>
                                         <li><a href="{{ route('accounts.accounts_deposit_view') }}">Deposits</a></li>
-                                        <li><a href="">Bank Account Transfers</a></li>
-                                        <li><a href="">Journal Entry</a></li>
+                                        <li><a href="{{ route('accounts.bank_account_transfer_view') }}">Bank Account Transfers</a></li>
+                                        <li><a href="{{ route('accounts.journal_entry_view') }}">Journal Entry</a></li>
                                         <li><a href="">Budget Entry</a></li>
                                         <li><a href="">Reconcile Bank Account</a></li>
                                         <li><a href="">Revenue / Costs Accruals</a></li>
@@ -213,11 +209,11 @@
                                         <li><a href="">Inventory Item Movements</a></li>
                                         <li><a href="">Inventory Item Status</a></li>
                                         <li><a href="">Inventory Reports</a></li>
-                                        <li><a href="">Items</a></li>
+                                        <li><a href="{{ route('inventory.add_items') }}">Items</a></li>
                                         <li><a href="">Foreign Item Codes</a></li>
                                         <li><a href="">Sales Kits</a></li>
                                         <li><a href="">Item Categories</a></li>
-                                        <li><a href="">Inventory Locations</a></li>
+                                        <li><a href="{{ route('inventory.inventorylocation') }}"">Inventory Locations</a></li>
                                         <li><a href="">Units of Measure</a></li>
                                         <li><a href="">Reorder Levels</a></li>
                                         <li><a href="">Sales Pricing</a></li>
