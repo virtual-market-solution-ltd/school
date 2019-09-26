@@ -10,6 +10,14 @@
         background:grey;
         margin-bottom:10px;
     }
+    .menu-box{
+        width:123px;
+        height:123px;
+        background:#00b0ff;
+        padding:15px;
+        color:white;
+        font-size:14px;
+    }
     @media only screen and (max-width: 500px) and (min-width: 450px) {
         .menu-box{
             width:123px;
@@ -52,8 +60,28 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
 
     <div class="container-fluid">
         <div class="row">
-            <div class="card" style="background-color:transparent !important; border:none;">
+            <div class="col-md-6">
+                <div class="mini-stat clearfix bg-white">
+                    <span class="mini-stat-icon bg-purple mr-0 float-right">
+                        <img src="/assets/images/icon_amar_school.png" alt="user" width="50px" class="rounded-circle">
+                    </span>
+                    <div class="mini-stat-info">
+                        <span class="counter text-purple">{!! Auth::user()->fullname !!}</span>
+                        @php
+                            $roles_id = Auth::user()->roles_id;
+                            $role_name = \App\Roles::where('id',$roles_id)->first();
+                            echo $role_name->name;
+                        @endphp
+                    </div>
+                    <div class="clearfix"></div>
+                    <p class=" mb-0 m-t-20 text-muted">Total income: $22506 </p>
+                </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <!--Menu-->
+            <div class="card" style="background-color:transparent !important; border:none;">
                 <div class="card-body">
                     <h4 style="color:grey">MENU</h4>
                     <div class="horizontal-line"></div>
@@ -163,6 +191,33 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                             </td>
                         </tr>
                     </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <!--Events-->
+                <div class="card" style="background-color:transparent !important; border:none;">
+                    <div class="card-body">
+                        <h4 style="color:grey">Events</h4>
+                        <div class="horizontal-line"></div>
+                        <div class="mini-stat clearfix bg-white">
+                            <span class="mini-stat-icon bg-purple mr-0 float-right"><i class="mdi mdi-basket"></i></span>
+                            <div class="mini-stat-info">
+                                <span class="counter text-purple">25140</span>
+                                Total Sales
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--Notice-->
+            <div class="card" style="background-color:transparent !important; border:none;">
+                <div class="card-body">
+                    <h4 style="color:grey">Notices</h4>
+                    <div class="horizontal-line"></div>
                 </div>
             </div>
         </div>
