@@ -173,7 +173,7 @@
                                         <li><a href="{{ route('accounts.journal_entry_view') }}">Journal Entry</a></li>
                                         <li><a href="">Budget Entry</a></li>
                                         <li><a href="">Reconcile Bank Account</a></li>
-                                        <li><a href="">Revenue / Costs Accruals</a></li>
+                                        <!--<li><a href="">Revenue / Costs Accruals</a></li>-->
                                         <li><a href="">Journal Inquiry</a></li>
                                         <li><a href="">GL Inquiry</a></li>
                                         <li><a href="">Bank Account Inquiry</a></li>

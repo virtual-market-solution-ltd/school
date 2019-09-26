@@ -38,6 +38,7 @@
                                     <option value="1">Customer</option>
                                     <option value="2">Supplier</option>
                                     <option value="3">Quick Entry</option>
+                                    <option value="4">Teacher</option>
                                 </select>
                             </div>
 
