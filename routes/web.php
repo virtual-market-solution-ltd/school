@@ -183,8 +183,19 @@ Route::post('/bank_accounts_store', 'AccountsController@bank_accounts_store')->n
 Route::get('/bank_accounts_edit/{id}/edit', 'AccountsController@bank_accounts_edit')->name('accounts.bank_accounts_edit');
 Route::put('/bank_accounts_update', 'AccountsController@bank_accounts_update')->name('accounts.bank_accounts_update');
 */
-
 /*------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+Route::get('/budget_entry_view', 'AccountsController@budget_entry_view')->name('accounts.budget_entry_view');
+Route::post('/budget_entry_view', 'AccountsController@budget_entry_view')->name('accounts.budget_entry_view');
+Route::put('/budget_entry_update', 'AccountsController@budget_entry_update')->name('accounts.budget_entry_update');
+
+
+/* 
+Route::post('/bank_accounts_store', 'AccountsController@bank_accounts_store')->name('accounts.bank_accounts_store');
+Route::get('/bank_accounts_edit/{id}/edit', 'AccountsController@bank_accounts_edit')->name('accounts.bank_accounts_edit');
+Route::put('/bank_accounts_update', 'AccountsController@bank_accounts_update')->name('accounts.bank_accounts_update');
+*/
 /**
  * 
  * SETTINGS

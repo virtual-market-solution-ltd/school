@@ -59,6 +59,10 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
 
 
     <div class="container-fluid">
+
+    @if(Auth::user()->roles_id == 3 || Auth::user()->roles_id == 4 )
+
+        
         <div class="row">
             <div class="col-md-6">
                 <div class="mini-stat clearfix bg-white">
@@ -74,7 +78,7 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                         @endphp
                     </div>
                     <div class="clearfix"></div>
-                    <p class=" mb-0 m-t-20 text-muted">Total income: $22506 </p>
+                    <p class=" mb-0 m-t-20 text-muted"></p>
                 </div>
             </div>
         </div>
@@ -88,12 +92,14 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                     <table class="text-center" style="width:100%;background-color:transparent !important; border:none;">
                         <tr>
                             <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-calendar fa-3x"></i>
-                                    </p>
-                                    <p>EVENTS</p>
-                                </div>
+                                <a href="/events">
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-calendar fa-3x"></i>
+                                        </p>
+                                        <p>EVENTS</p>
+                                    </div>
+                                </a>
                             </td>
                             <td>
                                 <div class="menu-box">
@@ -213,18 +219,26 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
             </div>
         </div>
         <div class="row">
-            <!--Notice-->
-            <div class="card" style="background-color:transparent !important; border:none;">
-                <div class="card-body">
-                    <h4 style="color:grey">Notices</h4>
-                    <div class="horizontal-line"></div>
+            <div class="col-md-6">
+                <!--Notice-->
+                <div class="card" style="background-color:transparent !important; border:none;">
+                    <div class="card-body">
+                        <h4 style="color:grey">Notices</h4>
+                        <div class="horizontal-line"></div>
+                        <div class="mini-stat clearfix bg-white">
+                            <span class="mini-stat-icon bg-purple mr-0 float-right"><i class="mdi mdi-basket"></i></span>
+                            <div class="mini-stat-info">
+                                <span class="counter text-purple">25140</span>
+                                Total Sales
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    @endif 
 
-
-        <?php 
-        /*
+    @if(Auth::user()->roles_id == 1 || Auth::user()->roles_id == 2 )
             <div class="row">
                 <div class="col-xl-6">
                     <div class="card m-b-20">
@@ -305,8 +319,7 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                     </div>
                 </div>
             </div>
-        */
-        ?>
+    @endif 
 
 
     </div><!-- container -->

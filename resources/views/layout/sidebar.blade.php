@@ -171,7 +171,7 @@
                                         <li><a href="{{ route('accounts.accounts_deposit_view') }}">Deposits</a></li>
                                         <li><a href="{{ route('accounts.bank_account_transfer_view') }}">Bank Account Transfers</a></li>
                                         <li><a href="{{ route('accounts.journal_entry_view') }}">Journal Entry</a></li>
-                                        <li><a href="">Budget Entry</a></li>
+                                        <li><a href="{{ route('accounts.budget_entry_view') }}">Budget Entry</a></li>
                                         <li><a href="">Reconcile Bank Account</a></li>
                                         <!--<li><a href="">Revenue / Costs Accruals</a></li>-->
                                         <li><a href="">Journal Inquiry</a></li>

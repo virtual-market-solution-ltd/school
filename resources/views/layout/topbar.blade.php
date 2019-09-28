@@ -63,7 +63,7 @@
                     aria-haspopup="false" aria-expanded="false">
                     <img src="/assets/images/icon_amar_school.png" alt="user" class="rounded-circle">
                     &nbsp;
-                    {!! Auth::user()->fullname !!}
+                    
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown">
                     <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i>Change Password</a>

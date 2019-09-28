@@ -13,6 +13,8 @@ use App\BankTransaction;
 use App\Comments;
 use App\AuditTrail;
 use App\Dimensions;
+use App\FiscalYear;
+use App\BudgetTransaction;
 
 class AccountsController extends Controller
 {
@@ -697,8 +699,79 @@ class AccountsController extends Controller
  * 
  */
 
-public function budget_entry_view(){
-     
+public function budget_entry_view(Request $request){
+    $schools_id = Auth::user()->schools_id;
+    $fiscal_years = FiscalYear::where('schools_id',$schools_id)->get();
+    $chart_types = ChartType::where('schools_id',$schools_id)->get();;
+    $dimensions = Dimensions::where('schools_id',$schools_id)->get();;
+
+    $fiscal_year_id = $request->fiscal_year;    
+    $account = $request->account;
+    $dimension_id = $request->dimension_id;
+
+    if($fiscal_year_id && $account){
+
+        $fiscal_year_info= FiscalYear::where('id',$fiscal_year_id)->first();
+        $fiscal_year_begin = date('Y-m-d',strtotime($fiscal_year_info->begin));
+        $fiscal_year_end = date('Y-m-d',strtotime($fiscal_year_info->end));
+        $fiscal_year = date('Y',strtotime($fiscal_year_info->begin));
+        $month_begin = date('m',strtotime($fiscal_year_info->begin));
+        $month_end = date('m',strtotime($fiscal_year_info->end));
+
+        $trans_date = array();
+
+        for($i= $month_begin; $i <= $month_end; $i++){
+            if(strlen($i) <= 1){
+                $trans_date[] = date($fiscal_year.'-0'.$i.'-01');
+            }else{
+                $trans_date[] = date($fiscal_year.'-'.$i.'-01');
+            }
+        }
+
+
+        return view('backend.accounts.budget_entry_view')->with(compact('fiscal_years','chart_types','dimensions','trans_date','dimension_id','account'));
+    }else{
+        return view('backend.accounts.budget_entry_view')->with(compact('fiscal_years','chart_types','dimensions'));
+    }
+
+    
+}
+
+public function budget_entry_update(Request $request){
+    
+    $schools_id = Auth::user()->schools_id;
+    $tran_date = (array)$request->tran_date;
+    $amount = (array)$request->amount;
+    $account = $request->account;
+
+    for($i=0;$i<count($tran_date);$i++){
+        $check = BudgetTransaction::where('schools_id',$schools_id)->where('tran_date',$tran_date[$i])->first();
+
+
+        if(count($check) == 0){
+            $insert = new BudgetTransaction;
+            $insert->tran_date = $tran_date[$i];
+            $insert->amount = $amount[$i];
+            $insert->schools_id = $schools_id;
+            $insert->account = $account;
+            $insert->memo_ = 0;
+            $insert->save();
+        }else{
+            //return "hello";
+            $update = BudgetTransaction::where('counter',$check->counter)->update([
+                'tran_date' => $tran_date[$i],
+                'amount' => $amount[$i],
+                'schools_id' => $schools_id,
+                'memo_' => 0,
+            ]);
+            
+
+        }
+    }
+
+    return redirect()->route('accounts.budget_entry_view')
+                                ->with('success','budget entry added successfully.');
+
 }
 
 
