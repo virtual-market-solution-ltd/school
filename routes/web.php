@@ -60,7 +60,9 @@ Route::resource('holiday', 'HolidayController');
 Route::resource('examroutine', 'ExamRoutineController');
 Route::resource('notice', 'NoticeController');
 Route::resource('transport', 'TransportController');
-
+Route::resource('result', 'ExamResultController');
+Route::post('/ajaxresult', 'ExamResultController@ajax')->name('result.ajax');
+Route::get('/result-view', 'ExamResultController@result_view')->name('result.result_view');
 
 /**
  * Admin Routes

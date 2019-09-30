@@ -18,7 +18,21 @@
                             <li><a href="/dashboard" class="waves-effect"><i class="mdi  mdi-view-dashboard"></i><span>Dashboard</span></a></li>
                                     
                             <li class="menu-title">Academic</li>
-                                <li><a href="/events" class="waves-effect"><i class="mdi  mdi-calendar"></i><span>Events</span></a></li>
+
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Events
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/events">Upcoming Events</a></li>
+                                        <li><a href="/events">Previous Events</a></li>
+                                    </ul>
+                                </li>
                                     
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
@@ -119,9 +133,28 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Report Card
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        @if(Auth::user()->roles_id == 2)
+                                        <!--<li><a href="/attendancerelation">Attendance Relation</a></li>-->
+                                        @endif
+                                        @if(Auth::user()->roles_id == 2)
+                                        <li><a href="/result">Insert Mark</a></li>
+                                        @endif
+                                        <li><a href="/result-view">Report Card</a></li>
+                                    </ul>
+                                </li>
 
 
-                                (@if(Auth::user()->roles_id == 2))
+                                @if(Auth::user()->roles_id == 2)
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
                                         <i class="mdi mdi-settings"></i>
@@ -137,6 +170,7 @@
                                             <li><a href="/section">Section</a></li>
                                             <li><a href="/subject">Subject</a></li>
                                             <li><a href="/holiday">Holiday</a></li>
+                                            <li><a href="/exams">Exams</a></li>
                                         @endif
                                     </ul>
                                 </li>
