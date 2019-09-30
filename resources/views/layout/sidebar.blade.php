@@ -33,6 +33,48 @@
                                         <li><a href="/events">Previous Events</a></li>
                                     </ul>
                                 </li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Notices
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/notice">Upcoming Events</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Meeting Request
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/meeting">Pending</a></li>
+                                        <li><a href="/meeting">old</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Leave Application
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/">Pending</a></li>
+                                        <li><a href="/meeting">Approved</a></li>
+                                    </ul>
+                                </li>
                                     
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
@@ -112,6 +154,24 @@
                                         <li><a href="/transport/create">Add Transport</a></li>
                                         @endif
                                         <li><a href="/transport">View Transport</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Academic Calendar
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="/academic-calendar" class="waves-effect">
+                                                <i class="mdi  mdi-calendar"></i>
+                                                <span>Academic Calendar</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 

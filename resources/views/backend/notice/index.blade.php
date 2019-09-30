@@ -5,12 +5,13 @@
 
     <div class="container-fluid">
         <div class="row">
+            <div class="col-xl-3"></div>
             <div class="col-xl-6">
                 <div class="card m-b-20">
                     <div class="card-body">
                         <h4 class="mt-0 m-b-30 header-title">Notices</h4>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-responsive">
+                            <table class="table table-bordered nowrap table-condensed">
                             <thead>
                                 <tr>
                                     <th>#</th>

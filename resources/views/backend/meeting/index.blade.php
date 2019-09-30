@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-body">
                         @if(Auth::user()->roles_id == 3)
-                            <table class="table table-responsive table-striped">
+                            <table class="table table-bordered table-condensed nowrap">
                                 <thead>
                                     <tr>
                                         <th>From</th>

@@ -56,6 +56,7 @@ Route::resource('homework', 'HomeworkController');
 //Route::resource('classworkrelation', 'ClasworkRelationController');
 //Route::resource('classwork', 'ClassworkController');
 Route::resource('meeting', 'MeetingRequestController');
+Route::resource('leave-application', 'LeaveApplicationController');
 Route::resource('holiday', 'HolidayController');
 Route::resource('examroutine', 'ExamRoutineController');
 Route::resource('notice', 'NoticeController');
@@ -63,6 +64,7 @@ Route::resource('transport', 'TransportController');
 Route::resource('result', 'ExamResultController');
 Route::post('/ajaxresult', 'ExamResultController@ajax')->name('result.ajax');
 Route::get('/result-view', 'ExamResultController@result_view')->name('result.result_view');
+Route::resource('academic-calendar', 'AcademicCalendarController');
 
 /**
  * Admin Routes
