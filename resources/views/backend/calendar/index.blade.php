@@ -55,7 +55,6 @@
                         <table class="table table-striped table-bordered now-wrap table-responsive-sm table-condensed" id="report_card">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Date</th>
                                     <th>Day</th>
                                     <th>Event</th>
@@ -64,7 +63,6 @@
                             <tbody>
                                 @foreach($calendars as $row)
                                     <tr>
-                                        <td>#</td>
                                         <td>{!! $row->date !!}</td>
                                         <td>{!! $row->day!!}</td>
                                         <td>{!! $row->event !!}</td>

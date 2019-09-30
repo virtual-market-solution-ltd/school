@@ -30,7 +30,11 @@ Route::group(['middleware' => 'auth'], function () {
  * 
  */
 Route::get('/dashboard', function () {
-    return view('backend.dashboard');
+    $date = date('Y-m-d');
+    $schools_id = \Auth::user()->schools_id;
+    $events = \App\Events::where('schools_id',$schools_id)->get();
+    $notices = \App\Notice::where('schools_id',$schools_id)->orderBy('id','desc')->get();
+    return view('backend.dashboard')->with(compact('events','notices'));
 });
 
 /**

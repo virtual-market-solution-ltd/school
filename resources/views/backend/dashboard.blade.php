@@ -203,19 +203,26 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
         <div class="row">
             <div class="col-md-6">
                 <!--Events-->
+                
                 <div class="card" style="background-color:transparent !important; border:none;">
                     <div class="card-body">
                         <h4 style="color:grey">Events</h4>
                         <div class="horizontal-line"></div>
+                        @foreach($events as $row)
                         <div class="mini-stat clearfix bg-white">
                             <span class="mini-stat-icon bg-purple mr-0 float-right"><i class="mdi mdi-basket"></i></span>
                             <div class="mini-stat-info">
-                                <span class="counter text-purple">25140</span>
-                                Total Sales
+                                <span class="counter text-purple">{!! $row->title !!}</span>
+                                Start : {!! $row->start_date !!}
+                                End : {!! $row->end_date !!} <br>
+                                {!! $row->description !!}
                             </div>
                         </div>
+                        @endforeach
+
                     </div>
                 </div>
+                
             </div>
         </div>
         <div class="row">
@@ -225,13 +232,15 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                     <div class="card-body">
                         <h4 style="color:grey">Notices</h4>
                         <div class="horizontal-line"></div>
+                        @foreach($notices as $row)
                         <div class="mini-stat clearfix bg-white">
                             <span class="mini-stat-icon bg-purple mr-0 float-right"><i class="mdi mdi-basket"></i></span>
                             <div class="mini-stat-info">
-                                <span class="counter text-purple">25140</span>
-                                Total Sales
+                                <span class="counter text-purple">{!! $row->title !!}</span>
+                                {!! $row->description !!}
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
