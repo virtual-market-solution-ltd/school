@@ -10,6 +10,7 @@ use App\SchoolSubject;
 use App\Student;
 use Auth;
 use Illuminate\Http\Request;
+use Storage;
 
 class HomeworkController extends Controller
 {
@@ -24,6 +25,7 @@ class HomeworkController extends Controller
         $teachers_id = Auth::user()->id;
 
         $role = Auth::user()->roles_id;
+
 
         if($role == 3){
             $homeworks = Homework::where('schools_id',$schools_id )
@@ -53,9 +55,23 @@ class HomeworkController extends Controller
             ->with('teacher')
             ->with('student')
             ->get();
+
+            
             return view('backend.homework.index')->with(compact('homeworks'));
         }
 
+        if($role == 2){
+            $homeworks = Homework::where('schools_id',$schools_id )
+            ->orderBy('id','desc')
+            ->with('schools')
+            ->with('school_classes')
+            ->with('school_sections')
+            ->with('school_subjects')
+            ->with('teacher')
+            ->with('student')
+            ->get();
+            return view('backend.homework.index')->with(compact('homeworks'));
+        }
         
 
 
@@ -69,11 +85,22 @@ class HomeworkController extends Controller
     public function create()
     {
         
+        if(Auth::user()->roles_id == 4){
+            return redirect()->route('homework.index');
+        }
+
+
         $schools_id = Auth::user()->schools_id;
         $users_id = Auth::user()->id;
+        $classes = SchoolClass::where('schools_id',$schools_id)->get();
+        $sections = SchoolSection::where('schools_id',$schools_id)->get();
+        $subjects = SchoolSubject::where('schools_id',$schools_id)->get();
 
 
+        return view('backend.homework.create')->with(compact('classes','sections','subjects'));
 
+
+        /*
  
 
         $class = HomeworkRelation::where('schools_id',$schools_id)
@@ -112,9 +139,9 @@ class HomeworkController extends Controller
             $subjects = '';
             return view('backend.homework.create')->with(compact('message','class_info','section_info','students_list'));
         }
-        
+        */
 
-        return view('backend.homework.create');
+       
     }
 
     /**
@@ -126,6 +153,19 @@ class HomeworkController extends Controller
     public function store(Request $request)
     {
         
+        $file = $request->attachment;
+        $file_exploded = explode('.',$file->getClientOriginalName());
+        $new_file =str_replace(' ', '',$file_exploded[0]).date('Ymdhis').'.'.$file_exploded[1];
+        $uploaded = '';
+
+        if(!empty($file)):
+            //$path = 'storage/vmsl/';
+            //\File::makeDirectory($path, $mode = 0777, true, true);
+             $uploaded =  Storage::disk('public')->put($new_file,file_get_contents($file));
+        endif;
+        //dd($uploaded);
+    
+
         $schools_id = $request->schools_id;
         $teachers_id = $request->teachers_id;
         $school_classes_id = $request->school_classes_id;
@@ -145,7 +185,7 @@ class HomeworkController extends Controller
         $insert->deadline = $deadline;
         $insert->description = $description;
         $insert->students_id = 11;
-        $insert->file_location = '/storage/vmsl';
+        $insert->file_location = '/storage/'.$new_file;
         $insert->save();
 
         //return view('backend.homework.index');

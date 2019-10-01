@@ -20,7 +20,7 @@
                             </div>
                         @endif
                        
-                        <form class="form-horizontal" action="{{ route('homework.store') }}" method="post">
+                        <form class="form-horizontal" action="{{ route('homework.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -37,28 +37,30 @@
                                     
                                     <div class="form-group">
                                         <label for="school_classes_id">Class Name</label>
-                                        <input type="text" class="form-control"  value="{{ $class_info->name }}" readonly>
-                                        <input type="hidden" class="form-control" id="school_classes_id" name="school_classes_id" value="{!! $class_info->id !!}">
+                                        <select class="form-control" name="school_classes_id" id="school_classes_id">
+                                            @foreach($classes as $row)
+                                                <option value="{!! $row->id !!}">{!! $row->name !!}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="school_sections_id">Section</label>
-                                        <input type="text" class="form-control"  value="{{ $section_info->name }}" readonly>
-                                        <input type="hidden" class="form-control" id="school_sections_id" name="school_sections_id" value="{!! $section_info->id !!}">
+                                        <select class="form-control" name="school_sections_id" id="school_sections_id">
+                                            @foreach($sections as $row)
+                                                <option value="{!! $row->id !!}">{!! $row->name !!}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="school_sections_id">Subject</label>
-                                        <Select class="form-control" name="school_subjects_id" id="school_subjects_id" required>
-                                            @foreach($subjects as $subject)
-                                                <option value="{!! $subject->school_subjects_id !!}">{!! $subject->school_subjects->name !!}</option>
+                                        <Select class="form-control" class="form-control" name="school_subjects_id" id="school_subjects_id" required>
+                                            @foreach($subjects as $row)
+                                                <option value="{!! $row->id !!}">{!! $row->name !!}</option>
                                             @endforeach
                                         </Select>
                                     </div>
-
-
- 
-                                
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -73,12 +75,12 @@
                                         <label for="teachers_id">Description</label>
                                         <textarea class="form-control" name="description" id="" cols="30" rows="10" required></textarea>
                                     </div>
-                                    <!--
+                                    
                                     <div class="form-group">
-                                        <label for="teachers_id">Choose FIle</label>
-                                        <input type="file" class="form-control"  value="" name="" id="">
+                                        <label for="attachment">Choose FIle</label>
+                                        <input type="file" class="form-control"  value="" name="attachment" id="attachment">
                                     </div>
-                                    -->
+                                    
 
                                 </div>
                             </div>
