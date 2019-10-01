@@ -62,7 +62,7 @@
                                 </li>
 
                                 <li class="has_sub">
-                                    <a href="" class="waves-effect">
+                                    <a href="/leave-application" class="waves-effect">
                                         <i class="mdi mdi-package-variant"></i>
                                         <span> Leave Application
                                             <span class="pull-right">
@@ -71,8 +71,8 @@
                                         </span>
                                     </a>
                                     <ul class="list-unstyled">
-                                        <li><a href="/">Pending</a></li>
-                                        <li><a href="/meeting">Approved</a></li>
+                                        <li><a href="/leave-application">Pending</a></li>
+                                        <li><a href="/leave-application">Approved</a></li>
                                     </ul>
                                 </li>
                                     

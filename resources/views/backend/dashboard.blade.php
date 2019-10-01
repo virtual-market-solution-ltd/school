@@ -102,98 +102,121 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                                 </a>
                             </td>
                             <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-users fa-3x"></i>
-                                    </p>
-                                    <p>ATTENDANCE</p>
-                                </div>
+                                <a href="/notice">
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-calendar fa-3x"></i>
+                                        </p>
+                                        <p>NOTICES</p>
+                                    </div>
+                                </a>
                             </td>
                             <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-book fa-3x"></i>
-                                    </p>
-                                    <p>HOMEWORK</p>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-book fa-3x"></i>
-                                    </p>
-                                    <p>CLASSWORK</p>
-                                </div>
+                                <a href="/attendance">
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-users fa-3x"></i>
+                                        </p>
+                                        <p>ATTENDANCE</p>
+                                    </div>
+                                <a>
                             </td>
                             <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-bus fa-3x"></i>
-                                    </p>
-                                    <p>TRANSPORT</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-calendar-o fa-3x"></i>
-                                    </p>
-                                    <p style="font-size:14px">EXAM ROUTINE</p>
-                                </div>
+                                <a href="/homework">
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-book fa-3x"></i>
+                                        </p>
+                                        <p>HOMEWORK</p>
+                                    </div>
+                                </a>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-book fa-3x"></i>
-                                    </p>
-                                    <p>CLASSWORK</p>
-                                </div>
+                                <a href="/homework">
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-book fa-3x"></i>
+                                        </p>
+                                        <p>CLASSWORK</p>
+                                    </div>
+                                </a>
                             </td>
                             <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-bus fa-3x"></i>
-                                    </p>
-                                    <p>TRANSPORT</p>
-                                </div>
+                                <a href="/transport">
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-bus fa-3x"></i>
+                                        </p>
+                                        <p>TRANSPORT</p>
+                                    </div>
+                                </a>
                             </td>
                             <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-calendar-o fa-3x"></i>
-                                    </p>
-                                    <p style="font-size:14px">EXAM ROUTINE</p>
-                                </div>
+                                <a href="/examroutine">                            
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-calendar-o fa-3x"></i>
+                                        </p>
+                                        <p style="font-size:14px">EXAM ROUTINE</p>
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a href="/meeting">
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-book fa-3x"></i>
+                                        </p>
+                                        <p>Meeting Request</p>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/leave-application">
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-bus fa-3x"></i>
+                                        </p>
+                                        <p>Leave Application</p>
+                                    </div>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/syllabus">                            
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-calendar-o fa-3x"></i>
+                                        </p>
+                                        <p style="font-size:14px">Syllabus</p>
+                                    </div>
+                                </a>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-book fa-3x"></i>
-                                    </p>
-                                    <p>CLASSWORK</p>
-                                </div>
+                                <a href="/result-view">
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-book fa-3x"></i>
+                                        </p>
+                                        <p>Report Card</p>
+                                    </div>
+                                </a>
                             </td>
                             <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-bus fa-3x"></i>
-                                    </p>
-                                    <p>TRANSPORT</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="menu-box">
-                                    <p class="icon-margin">
-                                        <i class="fa fa-calendar-o fa-3x"></i>
-                                    </p>
-                                    <p style="font-size:14px">EXAM ROUTINE</p>
-                                </div>
+                                <a href="/academic-calendar">
+                                    <div class="menu-box">
+                                        <p class="icon-margin">
+                                            <i class="fa fa-book fa-3x"></i>
+                                        </p>
+                                        <p>Calendar</p>
+                                    </div>
+                                </a>
                             </td>
                         </tr>
                     </table>
