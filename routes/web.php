@@ -69,6 +69,11 @@ Route::resource('result', 'ExamResultController');
 Route::post('/ajaxresult', 'ExamResultController@ajax')->name('result.ajax');
 Route::get('/result-view', 'ExamResultController@result_view')->name('result.result_view');
 Route::resource('academic-calendar', 'AcademicCalendarController');
+Route::resource('syllabus', 'SyllabusController');
+
+Route::get('/students','StudentsController@index')->name('students.index');
+Route::post('/students','StudentsController@update')->name('students.update');;
+Route::get('/students/{id}/edit','StudentsController@edit')->name('students.edit');;
 
 /**
  * Admin Routes

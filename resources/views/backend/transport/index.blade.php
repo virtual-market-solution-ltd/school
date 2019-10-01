@@ -8,10 +8,10 @@
             <div class="col-xl-12">
                 <div class="card m-b-20">
                     <div class="card-body">
-                        <h4 class="mt-0 m-b-30 header-title">Homeworks</h4>
+                        <h4 class="mt-0 m-b-30 header-title">Transport Schedule</h4>
                         <hr>
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-condensed">
                                 <thead>
                                     <tr>
                                         <th>Pick Up</th>

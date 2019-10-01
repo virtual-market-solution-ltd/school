@@ -174,6 +174,28 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li class="has_sub">
+                                    <a href="" class="waves-effect">
+                                        <i class="mdi mdi-package-variant"></i>
+                                        <span> Syllabus
+                                            <span class="pull-right">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="/syllabus" class="waves-effect">
+                                                <i class="mdi  mdi-calendar"></i>
+                                                <span>Academic Syllabus</span>
+                                            </a>
+                                            <a href="/syllabus" class="waves-effect">
+                                                <i class="mdi  mdi-calendar"></i>
+                                                <span>Add Syllabus</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
 
                                 <li class="has_sub">
                                     <a href="" class="waves-effect">
@@ -231,6 +253,7 @@
                                             <li><a href="/subject">Subject</a></li>
                                             <li><a href="/holiday">Holiday</a></li>
                                             <li><a href="/exams">Exams</a></li>
+                                            <li><a href="/students">Students</a></li>
                                         @endif
                                     </ul>
                                 </li>
