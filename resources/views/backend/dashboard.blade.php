@@ -121,6 +121,8 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                                     </div>
                                 <a>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <a href="/homework">
                                     <div class="menu-box">
@@ -131,8 +133,6 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                                     </div>
                                 </a>
                             </td>
-                        </tr>
-                        <tr>
                             <td>
                                 <a href="/homework">
                                     <div class="menu-box">
@@ -153,6 +153,9 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                                     </div>
                                 </a>
                             </td>
+                        </tr>
+
+                        <tr>
                             <td>
                                 <a href="/examroutine">                            
                                     <div class="menu-box">
@@ -163,9 +166,6 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                                     </div>
                                 </a>
                             </td>
-                        </tr>
-
-                        <tr>
                             <td>
                                 <a href="/meeting">
                                     <div class="menu-box">
@@ -186,6 +186,8 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                                     </div>
                                 </a>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <a href="/syllabus">                            
                                     <div class="menu-box">
@@ -196,8 +198,6 @@ alert("Your screen resolution is: " + screen.width + "x" + screen.height);
                                     </div>
                                 </a>
                             </td>
-                        </tr>
-                        <tr>
                             <td>
                                 <a href="/result-view">
                                     <div class="menu-box">
