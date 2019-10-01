@@ -35,7 +35,7 @@
                                         <td>{!! $row->deadline !!}</td>
                                         <td>{!! $row->name !!}</td>
                                         <td>{!! $row->description !!}</td>
-                                        <td><a href="{!! $row->file_location !!}"><button class="btn btn-sm btn-primary">Download</button> </a></td>
+                                        <td><a href="https://phpstack-318058-979156.cloudwaysapps.com/{!!$row->file_location!!}">Download</a></td>
                                         <td>{!! $row->created_at !!}</td>
                                     </tr>
                                     @endforeach
