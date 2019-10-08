@@ -98,16 +98,56 @@ Route::get('/students/{id}/edit','StudentsController@edit')->name('students.edit
 
 /**
  * 
- * EVENTS
+ * Events
  * 
  */
 Route::get('/events', 'EventsController@index')->name('events');
 
 /**
  * 
- * Payroll+HCM
+ * Human Resource Management
+ * Route Template :  Route::get('/', 'HRController@')->name('hr.');
  * 
  */
+Route::get('/incometaxsetup', 'HRController@income_tax_setup')->name('hr.income_tax_setup');
+Route::post('/incometaxsetup', 'HRController@income_tax_setup_store')->name('hr.income_tax_setup');
+Route::put('/incometaxsetup', 'HRController@income_tax_setup_update')->name('hr.income_tax_setup');
+
+Route::get('/areas', 'HRController@areas')->name('hr.areas');
+Route::post('/areas', 'HRController@areas_store')->name('hr.areas');
+Route::put('/areas', 'HRController@areas_update')->name('hr.areas');
+
+Route::get('/nationality', 'HRController@nationality')->name('hr.nationality');
+Route::post('/nationality', 'HRController@nationality_store')->name('hr.nationality');
+Route::put('/nationality', 'HRController@nationality_update')->name('hr.nationality');
+
+Route::get('/religion', 'HRController@religion')->name('hr.religion');
+Route::post('/religion', 'HRController@religion_store')->name('hr.religion');
+Route::put('/religion', 'HRController@religion_update')->name('hr.religion');
+
+Route::get('/maritalstatus', 'HRController@maritalstatus')->name('hr.maritalstatus');
+Route::post('/maritalstatus', 'HRController@maritalstatus_store')->name('hr.maritalstatus');
+Route::put('/maritalstatus', 'HRController@maritalstatus_update')->name('hr.maritalstatus');
+
+Route::get('/department', 'HRController@department')->name('hr.department');
+Route::post('/department', 'HRController@department_store')->name('hr.department');
+Route::put('/department', 'HRController@department_update')->name('hr.department');
+
+Route::get('/site', 'HRController@site')->name('hr.site');
+Route::post('/site', 'HRController@site_store')->name('hr.site');
+Route::put('/site', 'HRController@site_update')->name('hr.site');
+
+Route::get('/designationgroup', 'HRController@designationgroup')->name('hr.designationgroup');
+Route::post('/designationgroup', 'HRController@designationgroup_store')->name('hr.designationgroup');
+Route::put('/designationgroup', 'HRController@designationgroup_update')->name('hr.designationgroup');
+
+Route::get('/designation', 'HRController@designation')->name('hr.designation');
+Route::post('/designation', 'HRController@designation_store')->name('hr.designation');
+Route::put('/designation', 'HRController@designation_update')->name('hr.designation');
+
+Route::get('/grade', 'HRController@grade')->name('hr.grade');
+Route::post('/grade', 'HRController@grade_store')->name('hr.grade');
+Route::put('/grade', 'HRController@grade_update')->name('hr.grade');
 
 
 

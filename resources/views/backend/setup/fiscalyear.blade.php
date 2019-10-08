@@ -47,46 +47,46 @@
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal{!! $row->id !!}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">EDIT FISCAL YEAR</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                    </button>
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">EDIT FISCAL YEAR</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form-horizontal" action="{{route('setup.fiscalyear_update')}}" method="post">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="id" value="{!! $row->id !!}">
+                                                            <div class="form-group">
+                                                                <label for="begin">Begin Date</label>
+                                                                <input type="date" class="form-control" name="begin" id="begin" value="{!! date('Y-m-d', strtotime($row->begin )) !!}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="end">End Date</label>
+                                                                <input type="date" class="form-control" name="end" id="end" value="{!! date('Y-m-d', strtotime($row->end )) !!}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">Is Closed</label>
+                                                                <select class="form-control" name="closed" id="closed" >
+                                                                    @if($row->closed == 0)
+                                                                    <option value="0">NO</option>
+                                                                    @elseif($row->closed == 1)
+                                                                    <option value="1">YES</option>
+                                                                    @else    
+                                                                    @endif
+                                                                    <option value="0">NO</option>
+                                                                    <option value="1">YES</option>
+                                                                </select>
+                                                            </div>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button  class="btn btn-primary" type="submit">Save changes</button>
+                                                        </form>
+                                                    </div>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <form class="form-horizontal" action="{{route('setup.fiscalyear_update')}}" method="post">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <input type="hidden" name="id" value="{!! $row->id !!}">
-                                                        <div class="form-group">
-                                                            <label for="begin">Begin Date</label>
-                                                            <input type="date" class="form-control" name="begin" id="begin" value="{!! date('Y-m-d', strtotime($row->begin )) !!}">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="end">End Date</label>
-                                                            <input type="date" class="form-control" name="end" id="end" value="{!! date('Y-m-d', strtotime($row->end )) !!}">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="">Is Closed</label>
-                                                            <select class="form-control" name="closed" id="closed" >
-                                                                @if($row->closed == 0)
-                                                                <option value="0">NO</option>
-                                                                @elseif($row->closed == 1)
-                                                                <option value="1">YES</option>
-                                                                @else    
-                                                                @endif
-                                                                <option value="0">NO</option>
-                                                                <option value="1">YES</option>
-                                                            </select>
-                                                        </div>
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button  class="btn btn-primary" type="submit">Save changes</button>
-                                                    </form>
-                                                </div>
-                                                </div>
-                                            </div>
                                             </div>
                                         </td>
                                     </tr>

@@ -411,6 +411,7 @@
                                             </span>
                                         </span>
                                     </a>
+                                    <p></p>
                                     <ul class="list-unstyled">
                                         <li><a href="">Employee - Information</a></li>
                                         <li><a href="">Employee Salary Structure</a></li>
@@ -467,26 +468,22 @@
                                         <li><a href="">Extra Salary Deduction Setting</a></li>
                                         <li><a href="">Retirement Time Settings</a></li>
                                     </ul>
-                                </li>
-                            <!--
-                                <li class="has_sub">
-                                    <a href="" class="waves-effect">
-                                        <i class="mdi mdi-package-variant"></i>
-                                        <span> Permissions
-                                            <span class="pull-right">
-                                                <i class="mdi mdi-chevron-right"></i>
-                                            </span>
-                                        </span>
-                                    </a>
+                                    <p style="color:white;margin-left:10px;">Maintenance</p>
                                     <ul class="list-unstyled">
-                                        <li><a href="/admin/product/create">Add New</a></li>
-                                        <li><a href="/admin/product">Product List</a></li>
-                                        <li><a href="/admin/category">Category</a></li>
+                                        <li><a href="{{ route('hr.income_tax_setup') }}">Income Tax Setup</a></li>
+                                        <li><a href="{{ route('hr.areas') }}">Locations</a></li>
+                                        <li><a href="{{ route('hr.nationality') }}">Nationality</a></li>
+                                        <li><a href="{{ route('hr.religion') }}">Religion</a></li>
+                                        <li><a href="{{ route('hr.maritalstatus') }}">Marital Status</a></li>
+                                        <li><a href="{{ route('hr.department') }}">Department</a></li>
+                                        <li><a href="{{ route('hr.site') }}">Site/Office</a></li>
+                                        <li><a href="{{ route('hr.designationgroup') }}">Designation Group</a></li>
+                                        <li><a href="{{ route('hr.grade') }}">Grade</a></li>
                                     </ul>
                                 </li>
-                            -->    
 
-                                @endif
+
+                            @endif
 
 
                             @if(Auth::user()->roles_id == 1 || Auth::user()->roles_id == 2)    
