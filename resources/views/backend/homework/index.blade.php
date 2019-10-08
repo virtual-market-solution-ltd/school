@@ -35,7 +35,7 @@
                                         <td>{!! $row->deadline !!}</td>
                                         <td>{!! $row->name !!}</td>
                                         <td>{!! $row->description !!}</td>
-                                        <td><a href="/{!!$row->file_location!!}">Download</a></td>
+                                        <td><a href="{!!$row->file_location!!}">Download</a></td>
                                         <td>{!! $row->created_at !!}</td>
                                     </tr>
                                     @endforeach
