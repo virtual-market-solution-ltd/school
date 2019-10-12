@@ -109,6 +109,31 @@ Route::get('/events', 'EventsController@index')->name('events');
  * Route Template :  Route::get('/', 'HRController@')->name('hr.');
  * 
  */
+Route::get('/employee', 'HRController@employee')->name('hr.employee');
+Route::get('/employee/create', 'HRController@employee_create')->name('hr.employee.create');
+Route::get('/employee/{id}/edit', 'HRController@employee_edit')->name('hr.employee.edit');
+Route::post('/employee', 'HRController@employee_store')->name('hr.employee');
+Route::put('/employee', 'HRController@employee_update')->name('hr.employee');
+
+Route::get('/extra-salary', 'HRController@extra_salary')->name('hr.extra_salary');
+Route::post('/extra-salary', 'HRController@extra_salary_store')->name('hr.extra_salary');
+
+Route::get('/extra-salary-deduct', 'HRController@extra_salary_deduct')->name('hr.extra_salary_deduct');
+Route::post('/extra-salary-deduct', 'HRController@extra_salary_deduct_store')->name('hr.extra_salary_deduct');
+
+Route::get('/salary-process-info', 'HRController@salary_process_info')->name('hr.salary_process_info');
+Route::post('/salary-process-info', 'HRController@salary_process_info_store')->name('hr.salary_process_info');
+
+Route::get('/hr-account-salary-sheet', 'HRController@hr_account_salary_sheet')->name('hr.hr_account_salary_sheet');
+Route::post('/hr-account-salary-sheet', 'HRController@hr_account_salary_sheet_store')->name('hr.hr_account_salary_sheet');
+
+
+Route::get('/hr-attendance', 'HRController@hr_attendance')->name('hr.hr_attendance');
+Route::post('/hr-attendance', 'HRController@hr_attendance_store')->name('hr.hr_attendance');
+
+
+
+
 Route::get('/incometaxsetup', 'HRController@income_tax_setup')->name('hr.income_tax_setup');
 Route::post('/incometaxsetup', 'HRController@income_tax_setup_store')->name('hr.income_tax_setup');
 Route::put('/incometaxsetup', 'HRController@income_tax_setup_update')->name('hr.income_tax_setup');
@@ -148,6 +173,7 @@ Route::put('/designation', 'HRController@designation_update')->name('hr.designat
 Route::get('/grade', 'HRController@grade')->name('hr.grade');
 Route::post('/grade', 'HRController@grade_store')->name('hr.grade');
 Route::put('/grade', 'HRController@grade_update')->name('hr.grade');
+Route::get('/grade/{id}/edit', 'HRController@grade_edit')->name('hr.grade_edit');
 
 
 
@@ -183,6 +209,10 @@ Route::post('/dimensionentry', 'DimensionController@postdimensionentry')->name('
  * 
  * Author:
  */
+
+Route::get('/account-hr-salary-sheet', 'AccountsController@hr_account_salary_sheet')->name('accounts.hr_account_salary_sheet');
+Route::put('/account-hr-salary-sheet-update', 'AccountsController@hr_account_salary_sheet_update')->name('accounts.hr_account_salary_sheet_update');
+
  /*------------------------------------------------------------------------------------------------------------------------------------------------*/   
 Route::get('/gl_account_classes_view', 'AccountsController@gl_account_classes_view')->name('accounts.gl_account_classes_view');
 Route::post('/gl_account_classes_store', 'AccountsController@gl_account_classes_store')->name('accounts.gl_account_classes_store');

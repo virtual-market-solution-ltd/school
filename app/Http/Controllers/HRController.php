@@ -15,13 +15,322 @@ use App\HR\HRSite;
 use App\HR\HRDesignationGroup;
 use App\HR\HRDesignation;
 use App\HR\HRGrade;
+use App\HR\HREmployee;
+use App\HR\HRExtraSalary;
+use App\HR\HRExtraSalaryDeduct;
+use App\HR\HRSalaryProcessInfo;
+use App\HR\HRAccountSalarySheet;
+use App\HR\HRAttendance;
+use App\HR\HRAttendanceDetails;
 
 
 class HRController extends Controller
 {
+/**
+ * 
+ * 
+ * HRM Transaction
+ * 
+ */
+
+/**Employee*/ 
+public function employee(){
+    $schools_id = Auth::user()->schools_id; 
+    $all = HREmployee::where('schools_id',$schools_id)->get();
+    return view('backend.hr.employee')->with(compact('all'));
+}
+public function employee_create(){
+    return view('backend.hr.employee_create');
+}
+
+public function employee_store(Request $request){
+    $schools_id = Auth::user()->schools_id; 
+    $insert = new HREmployee;
+    $insert->schools_id = $schools_id ;
+    $insert->name = $request->name ;
+    $insert->f_name = $request->f_name ;
+    $insert->f_add = $request->f_add ;
+    $insert->f_occupation = $request->f_occupation ;
+    $insert->m_name = $request->m_add ;
+    $insert->m_add = $request->m_name ;
+    $insert->m_occupation = $request->m_occupation ;
+    $insert->present_add = $request->present_add ;
+    $insert->dob = $request->dob ;
+    $insert->pob = $request->pob ;
+    $insert->national_id = $request->national_id ;
+    $insert->bc_no = $request->bc_no ;
+    $insert->marital_status = $request->marital_status ;
+    $insert->nationality = $request->nationality ;
+    $insert->religion = $request->religion ;
+    $insert->blood_group = $request->blood_group ;
+    $insert->marriage_date = $request->marriage_date ;
+    $insert->spouse_name = $request->spouse_name ;
+    $insert->spouse_add = $request->spouse_add ;
+    $insert->spouse_occupation = $request->spouse_occupation ;
+    $insert->no_of_child = $request->no_of_child ;
+    $insert->save();
+
+    return redirect()
+        ->route('hr.employee.create')
+        ->with('success','New employee added');
+}
+
+public function employee_edit(Request $request){
+    $id = $request->id;
+    $data = HREmployee::where('emp_code',$id)->first();
+    return view('backend.hr.employee_edit')->with(compact('data'));
+}
+
+public function employee_update(Request $request){
+    $id = $request->id;
+
+    $update = HREmployee::where('emp_code',$id)
+        ->update([
+            'chip_no' => $request->chip_no,
+            'holyday_status' => $request->holiday_status,
+            'dimension' => $request->dimension,
+            'line_manager' => $request->line_manager,
+            'grade' => $request->grade,
+            'site' => $request->site,
+            'department' => $request->department,
+            'emp_type' => $request->emp_type,
+            'designation' => $request->designation,
+            'designation_group' => $request->designation_group,
+            //'shift' => $request->shift,
+            'grosssalary' => $request->gross_salary,
+            'is_so' => $request->is_so,
+            'location' => $request->location,
+            'date_of_confirmation' => $request->date_of_confirmation,
+            'doj' => $request->doj,
+            'tin' => $request->tin,
+            'set_pf' => $request->set_pf,
+            'email' => $request->email,
+            'set_gf' => $request->set_gf,
+            'set_tax' => $request->set_tax,
+            'tax_amount' => $request->tax_amount,
+            'emergency_add' => $request->emergency_add,
+            'cp_add' => $request->cp_add,
+            'contact_person' => $request->contact_person,
+            'cp_phone' => $request->cp_phone,
+            'date_of_activation' => $request->date_of_activation,
+            'account_code' => $request->account_code
+        ]);
+        return redirect()
+            ->route('hr.employee')
+            ->with('success','Employee Information updated successfully');
+}
+
+/**Extra Salary */
+
+public function extra_salary(){
+
+    return view('backend.hr.extra_salary');
+}
+
+public function extra_salary_store(Request $request){
+    
+    $insert = new HRExtraSalary;
+    $insert->schools_id = $request->schools_id;
+    $insert->emp_code = $request->emp_code ;
+    $insert->head_code = $request->head_code ;
+    $insert->amount = $request->amount ;
+    $insert->month = $request->month ;
+    $insert->year = $request->year ;
+    $insert->entry_date = $request->entry_date;
+    $insert->entry_user = $request->entry_user;
+    $insert->status = 0 ;
+    $insert->save();
+
+    return redirect()
+        ->route('hr.extra_salary')
+        ->with('success','Extra Salary Added Successfully');
+}
+
+public function extra_salary_deduct(){
+
+    return view('backend.hr.extra_salary_deduct');
+}
+
+public function extra_salary_deduct_store(Request $request){
+    
+    $insert = new HRExtraSalaryDeduct;
+    $insert->schools_id = $request->schools_id;
+    $insert->emp_code = $request->emp_code ;
+    $insert->head_code = $request->head_code ;
+    $insert->amount = $request->amount ;
+    $insert->month = $request->month ;
+    $insert->year = $request->year ;
+    $insert->entry_date = $request->entry_date;
+    $insert->entry_user = $request->entry_user;
+    $insert->status = 0 ;
+    $insert->save();
+
+    return redirect()
+        ->route('hr.extra_salary_deduct')
+        ->with('success','Extra Salary deduct added Successfully');
+}
+
+/**Salary Process Info */
 
 
+public function salary_process_info(){
+    $schools_id = Auth::user()->schools_id;
+    $salary_processed = HRSalaryProcessInfo::where('schools_id',$schools_id)
+                            ->get();
+    return view('backend.hr.salary_process_info')
+                ->with(compact('salary_processed'));
+}
+public function salary_process_info_store(Request $request){
 
+/*
+    $insert = new HRSalaryProcessInfo;
+    $insert->schools_id = $request->schools_id;
+    $insert->year = $request->year;
+    $insert->month_id = $request->month_id;
+    $insert->processed_date = $request->processed_date;
+    $insert->steps = 0;
+    $insert->twd = 0;
+    $insert->com_id=0;
+    $insert->jl_status = 0;
+    $insert->save();
+*/
+    $schools_id = Auth::user()->schools_id;
+    $emp_codes = HREmployee::where('schools_id',$schools_id)->get();
+    foreach($emp_codes as $row){
+        $amount = $row->grosssalary;
+
+        $insert = new HRAccountSalarySheet;
+        $insert->emp_code = $row->emp_code;
+        $insert->account = $row->account_code;
+        $insert->amount = $amount; 
+        $insert->status = 0;
+        $insert->processed_by = Auth::user()->fullname;
+        $insert->schools_id = $schools_id;
+        $insert->year = $request->year;
+        $insert->month_id = $request->month_id;
+        $insert->processed_date = $request->processed_date;
+        $insert->save();
+    }
+
+    return redirect()
+        ->route('hr.salary_process_info')
+        ->with('success','Salary Month Processed');
+}
+
+/**Salary Sheet */
+
+public function hr_account_salary_sheet(Request $request){
+
+    if(isset($request->year) && isset($request->month_id)){
+        $schools_id = Auth::user()->schools_id;
+        $year = $request->year;
+        $month_id =  $request->month_id;
+        $salary_sheet = HRAccountSalarySheet::where('schools_id',$schools_id)
+                                                    ->where('year',$year)
+                                                    ->where('month_id',$month_id)
+                                                    ->get();
+        return view('backend.hr.hr_account_salary_sheet')
+                        ->with(compact('salary_sheet'));
+    }else{
+        return view('backend.hr.hr_account_salary_sheet');
+    }
+ 
+}
+
+
+/** HR ATTENDANCE CSV UPLOAD */
+
+
+public function hr_attendance(){
+    $schools_id = Auth::user()->schools_id;
+    $hr_attendance = HRAttendance::where('schools_id',$schools_id)->OrderBy('id','desc')->get(); 
+    return view('backend.hr.hr_attendance')->with(compact('hr_attendance'));
+}
+
+public function hr_attendance_store(Request $request){
+    $file = $request->file('attendance_csv');
+
+      // File Details 
+      $filename = $file->getClientOriginalName();
+      $extension = $file->getClientOriginalExtension();
+      $tempPath = $file->getRealPath();
+      $fileSize = $file->getSize();
+      $mimeType = $file->getMimeType();
+
+      // Valid File Extensions
+      $valid_extension = array("csv");
+
+      // 2MB in Bytes
+      $maxFileSize = 2097152; 
+
+      // Check file extension
+      if(in_array(strtolower($extension),$valid_extension)){
+
+            // Check file size
+            if($fileSize <= $maxFileSize){
+
+            // File upload location
+            $location = 'uploads';
+
+            // Upload file
+            $file->move($location,$filename);
+
+            // Import CSV to Database
+            $filepath = public_path($location."/".$filename);
+
+            // Reading file
+            $file = fopen($filepath,"r");
+
+            $importData_arr = array();
+            $i = 0;
+
+            while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) {
+                $num = count($filedata );
+                if($i == 0){
+                    $i++;
+                    continue; 
+                }
+                for ($c=0; $c < $num; $c++) {
+                $importData_arr[$i][] = $filedata [$c];
+                }
+                $i++;
+            }
+            fclose($file);
+
+            // Insert to MySQL database
+            foreach($importData_arr as $importData){
+
+                $insert = new HRAttendance;
+                $insert->schools_id = Auth::user()->schools_id;
+                $insert->csv_id = 1;
+                $insert->emp_code = $importData[2];
+                $insert->login_date = $importData[3];
+                $insert->login_time = $importData[4];
+                $insert->lunch_time = $importData[5];
+                $insert->logout_date = $importData[6];
+                $insert->actual_logout_time = $importData[7];
+                $insert->total_time = $importData[8];
+                $insert->total_office_time = $importData[9];
+                $insert->ot = $importData[10];
+                $insert->extra_ot = $importData[11];
+                $insert->night_ot = $importData[12];
+                $insert->status = $importData[13];
+                $insert->abs_status = $importData[14];
+                $insert->late_status = $importData[15];
+                $insert->tiffin_bill = $importData[16];
+                $insert->is_logged_in = $importData[17];
+                $insert->is_edited = $importData[18];
+                $insert->att_year = $importData[19];
+                $insert->save();
+
+            }
+
+            return redirect()
+                ->route('hr.hr_attendance')
+                ->with('success','Attendance Uploaded Successfully');
+        }
+    }
+}
 
 /**
  * 
@@ -331,7 +640,9 @@ public function designation_update(Request $request){
         'inactive'=> $request->inactive
     ]);
 
-    return redirect()->route('hr.designation')->with('success','Designation info updated successfully');
+    return redirect()
+        ->route('hr.designation')
+        ->with('success','Designation info updated successfully');
 }
 
 
@@ -346,14 +657,31 @@ public function grade(){
 public function grade_store(Request $request){
     $schools_id = Auth::user()->schools_id; 
 
-    $insert = new HRDesignation;
+    $insert = new HRGrade;
     $insert->schools_id = $schools_id;
-    $insert->designation = $request->designation;
-    $insert->d_position = 0;
+    $insert->grade = $request->grade;
+    $insert->ot = $request->ot;
+    $insert->ot_count_after = $request->ot_count_after;
+    $insert->epdp = $request->epdp;
+    $insert->att_bonus = $request->att_bonus;
+    $insert->nt_bonus = $request->nt_bonus;
+    $insert->nt_amount = $request->nt_amount;
+    $insert->weekend_starts_after = $request->weekend_starts_after;
+    $insert->h_to_a = $request->h_to_a;
     $insert->inactive = 0;
     $insert->save();
 
-    return redirect()->route('hr.grade')->with('success','New designation  added successfully');
+    return redirect()
+        ->route('hr.grade')
+        ->with('success','New grade  added successfully');
+}
+
+public function grade_edit(Request $request){
+    $id = $request->id;
+    $schools_id = Auth::user()->schools_id;    
+    $row = HRGrade::where('schools_id',$schools_id)->where('id',$id)->first();
+    return view('backend.hr.grade_edit')
+        ->with(compact('row'));
 }
 
 public function grade_update(Request $request){
@@ -361,12 +689,15 @@ public function grade_update(Request $request){
     $id = $request->id;
     $schools_id = Auth::user()->schools_id;
 
-    $update = HRDesignation::where('schools_id',$schools_id)->where('id',$id)->update([
-        'designation' => $request->designation,
-        'inactive'=> $request->inactive
-    ]);
+    $update = HRDesignation::where('schools_id',$schools_id)->where('id',$id)
+        ->update([
+            'designation' => $request->designation,
+            'inactive'=> $request->inactive
+        ]);
 
-    return redirect()->route('hr.grade')->with('success','Designation info updated successfully');
+    return redirect()
+        ->route('hr.grade') 
+        ->with('success','Grade info updated successfully');
 }
 
 

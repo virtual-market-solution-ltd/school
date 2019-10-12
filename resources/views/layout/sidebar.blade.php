@@ -479,6 +479,8 @@
                                         <li><a href="{{ route('hr.site') }}">Site/Office</a></li>
                                         <li><a href="{{ route('hr.designationgroup') }}">Designation Group</a></li>
                                         <li><a href="{{ route('hr.grade') }}">Grade</a></li>
+                                        <li><a href="">Grade</a></li>
+
                                     </ul>
                                 </li>
 

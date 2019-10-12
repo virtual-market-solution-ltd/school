@@ -15,6 +15,9 @@ use App\AuditTrail;
 use App\Dimensions;
 use App\FiscalYear;
 use App\BudgetTransaction;
+use App\HR\HRAccountSalarySheet;
+use App\HR\HRExtraSalary;
+use App\HR\HRExtraSalaryDeduct;
 
 class AccountsController extends Controller
 {
@@ -877,6 +880,74 @@ public function gl_reports_view(){
      
 }
 
+
+
+/**Salary Sheet */
+
+public function hr_account_salary_sheet(Request $request){
+    $schools_id = Auth::user()->schools_id;
+    $chart_master = ChartMaster::where('schools_id',$schools_id)->get();
+
+    if(isset($request->year) && isset($request->month_id)){
+        $year = $request->year;
+        $month_id =  $request->month_id;
+        $salary_sheet = HRAccountSalarySheet::where('schools_id',$schools_id)
+                                                    ->where('year',$year)
+                                                    ->where('month_id',$month_id)
+                                                    ->where('status',0)
+                                                    ->get();
+        return view('backend.accounts.hr_account_salary_sheet')
+                        ->with(compact('salary_sheet','chart_master'));
+    }else{
+        return view('backend.accounts.hr_account_salary_sheet')
+                            ->with(compact('chart_master'));
+    }
+ 
+}
+
+public function hr_account_salary_sheet_update(Request $request){
+
+    //return $request->all();
+    $schools_id = Auth::user()->schools_id;
+
+    for($i=0;$i<count($request->id);$i++){
+        $gross_salary = $request->amount[$i];
+        $extra_salary = HRExtraSalary::where('emp_code',$request->emp_code[$i])->sum('amount');
+        $extra_salary_deduct = HRExtraSalaryDeduct::where('emp_code',$request->emp_code[$i])->sum('amount');
+        $amount = ($gross_salary+$extra_salary)-$extra_salary_deduct;
+        $status = 1;
+        $account_code = $request->account_code;
+        $emp_account_code = $request->emp_account_code[$i]; 
+
+        $insert = new GLTranscation;
+        $insert->schools_id = $schools_id;
+        $insert->account = $emp_account_code;
+        $insert->amount = $amount;
+        $insert->type = 4;
+        $insert->type_no = 10;
+        $insert->memo_ = 'Salary disbursement';
+        $insert->save();
+
+        $insert_1 = new GLTranscation;
+        $insert_1->schools_id = $schools_id;
+        $insert_1->account = $account_code;
+        $insert_1->amount = -$amount;
+        $insert_1->type = 4;
+        $insert_1->type_no = 10;
+        $insert_1->memo_ = 'Salary disbursement';
+        $insert_1->save();
+
+
+        $update = HRAccountSalarySheet::where('schools_id',$schools_id)
+            ->where('id',$request->id[$i])->update([
+                'status' => $status,
+                'processed_by' => Auth::user()->fullname
+            ]);
+    }
+
+    return redirect()->route('accounts.hr_account_salary_sheet')->with('success','Salary disbursed');
+ 
+}
 
 
 
